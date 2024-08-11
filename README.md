@@ -2,6 +2,10 @@
 
 This is a simple, fun, and engaging app designed to immerse Harry Potter fans in the magic of the wizarding world through daily interactions. The app offers daily spells, character trivia, and a Hogwarts house quiz, providing a dose of Harry Potter magic in an easy-to-use format.
 
+## PR preview
+
+![screenshot](./assets/preview.gif)
+
 ## Initial app schema
 
 ![screenshot](./assets/app_schema.svg)
