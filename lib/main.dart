@@ -44,22 +44,22 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  final List<Widget> _pages = const [
-    HousePage(),
-    SpellsPage(),
-    CharactersPage(),
-    SettingsPage(),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    const List<Widget> pages = [
+      HousePage(),
+      SpellsPage(),
+      CharactersPage(),
+      SettingsPage(),
+    ];
+
     return Scaffold(
       bottomNavigationBar: CustomNavigationBar(
         onDestinationSelected: _onDestinationSelected,
         selectedIndex: _selectedIndex,
       ),
       body: SafeArea(
-        child: _pages[_selectedIndex],
+        child: pages[_selectedIndex],
       ),
     );
   }
