@@ -1,9 +1,11 @@
+import 'package:daily_hogwarts/core/utils/styles.dart';
 import 'package:daily_hogwarts/core/widgets/custom_navigation_bar.dart';
 import 'package:daily_hogwarts/features/characters/characters_page.dart';
 import 'package:daily_hogwarts/features/house/house_page.dart';
 import 'package:daily_hogwarts/features/settings/settings_page.dart';
 import 'package:daily_hogwarts/features/spells/spells_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,22 +23,29 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.deepPurpleAccent,
           brightness: Brightness.dark,
         ),
+        textTheme: GoogleFonts.lexendTextTheme(
+          Theme.of(context).textTheme.apply(
+                displayColor: Colors.white,
+                bodyColor: Colors.white,
+              ),
+        ), // TextTheme(
+        navigationBarTheme: NavigationBarThemeData(
+          labelTextStyle: navLabelTextStyle,
+        ),
       ),
-      home: const MyHomePage(title: 'Home Page'),
+      home: const MainContainer(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class MainContainer extends StatefulWidget {
+  const MainContainer({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MainContainer> createState() => _MainContainerState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MainContainerState extends State<MainContainer> {
   int _selectedIndex = 0;
   void _onDestinationSelected(int index) {
     setState(() {
