@@ -5,8 +5,8 @@ class Character {
   final String species;
   final String gender;
   final String house;
-  final Null dateOfBirth;
-  final Null yearOfBirth;
+  final String? dateOfBirth;
+  final int? yearOfBirth;
   final bool wizard;
   final String ancestry;
   final String eyeColour;
@@ -51,8 +51,8 @@ class Character {
       species: data['species'],
       gender: data['gender'],
       house: data['house'],
-      dateOfBirth: null,
-      yearOfBirth: null,
+      dateOfBirth: data['dateOfBirth'],
+      yearOfBirth: data['yearOfBirth'],
       wizard: data['wizard'],
       ancestry: data['ancestry'],
       eyeColour: data['eyeColour'],
@@ -73,7 +73,7 @@ class Character {
 class Wand {
   late final String wood;
   late final String core;
-  late final String? length;
+  late final double? length;
 
   Wand({
     required this.wood,
