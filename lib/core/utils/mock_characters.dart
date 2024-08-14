@@ -116,7 +116,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Tom Felton",
     "alternate_actors": [],
     "alive": true,
-    "image": "https://ik.imagekit.io/hpapi/draco.jpg"
+    "image": "https://ik.imagekit.io/hpapi/draco.jpg",
   },
   {
     "id": "ca3827f0-375a-4891-aaa5-f5e8a5bad225",
@@ -138,7 +138,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Dame Maggie Smith",
     "alternate_actors": [],
     "alive": true,
-    "image": "https://ik.imagekit.io/hpapi/mcgonagall.jpg"
+    "image": "https://ik.imagekit.io/hpapi/mcgonagall.jpg",
   },
   {
     "id": "d5c4daa3-c726-426a-aa98-fb40f3fba816",
@@ -160,7 +160,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Robert Pattinson",
     "alternate_actors": [],
     "alive": false,
-    "image": "https://ik.imagekit.io/hpapi/cedric.png"
+    "image": "https://ik.imagekit.io/hpapi/cedric.png",
   },
   {
     "id": "8f9aa40b-5d7c-441e-ad32-4564ecda3b70",
@@ -182,7 +182,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Katie Leung",
     "alternate_actors": [],
     "alive": true,
-    "image": "https://ik.imagekit.io/hpapi/cho.jpg"
+    "image": "https://ik.imagekit.io/hpapi/cho.jpg",
   },
   {
     "id": "3569d265-bd27-44d8-88e8-82fb0a848374",
@@ -204,7 +204,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Alan Rickman",
     "alternate_actors": [],
     "alive": false,
-    "image": "https://ik.imagekit.io/hpapi/snape.jpg"
+    "image": "https://ik.imagekit.io/hpapi/snape.jpg",
   },
   {
     "id": "36bfefd0-e0bb-4d11-be98-d1ef6117a77a",
@@ -226,7 +226,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Robbie Coltrane",
     "alternate_actors": [],
     "alive": true,
-    "image": "https://ik.imagekit.io/hpapi/hagrid.png"
+    "image": "https://ik.imagekit.io/hpapi/hagrid.png",
   },
   {
     "id": "3db6dc51-b461-4fa4-a6e4-b1ff352221c5",
@@ -248,7 +248,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Matthew Lewis",
     "alternate_actors": [],
     "alive": true,
-    "image": "https://ik.imagekit.io/hpapi/neville.jpg"
+    "image": "https://ik.imagekit.io/hpapi/neville.jpg",
   },
   {
     "id": "861c4cde-2f0f-4796-8d8f-9492e74b2573",
@@ -270,7 +270,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Evanna Lynch",
     "alternate_actors": [],
     "alive": true,
-    "image": "https://ik.imagekit.io/hpapi/luna.jpg"
+    "image": "https://ik.imagekit.io/hpapi/luna.jpg",
   },
   {
     "id": "1cd6dc64-01a9-4379-9cfd-1a7167ba1bb1",
@@ -292,7 +292,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Bonnie Wright",
     "alternate_actors": [],
     "alive": true,
-    "image": "https://ik.imagekit.io/hpapi/ginny.jpg"
+    "image": "https://ik.imagekit.io/hpapi/ginny.jpg",
   },
   {
     "id": "2cfd2d4b-5d1e-4dc5-8837-37a97c7e2f2f",
@@ -314,7 +314,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Gary Oldman",
     "alternate_actors": ["James Walters", "Rohan Gotobed"],
     "alive": false,
-    "image": "https://ik.imagekit.io/hpapi/sirius.JPG"
+    "image": "https://ik.imagekit.io/hpapi/sirius.JPG",
   },
   {
     "id": "b8f9095b-9de6-4d7d-83e0-4391af8f22e4",
@@ -336,7 +336,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "David Thewlis",
     "alternate_actors": [],
     "alive": false,
-    "image": "https://ik.imagekit.io/hpapi/lupin.jpg"
+    "image": "https://ik.imagekit.io/hpapi/lupin.jpg",
   },
   {
     "id": "dd925874-e800-4eb4-9f0d-4d0fed15634b",
@@ -358,7 +358,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Mark Williams",
     "alternate_actors": [],
     "alive": true,
-    "image": "https://ik.imagekit.io/hpapi/arthur.jpg"
+    "image": "https://ik.imagekit.io/hpapi/arthur.jpg",
   },
   {
     "id": "6afb1960-febd-418d-b604-e50c1b59459b",
@@ -380,7 +380,7 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Helena Bonham Carter",
     "alternate_actors": [],
     "alive": false,
-    "image": "https://ik.imagekit.io/hpapi/bellatrix.jpg"
+    "image": "https://ik.imagekit.io/hpapi/bellatrix.jpg",
   },
   {
     "id": "efa802c8-ae18-4ae1-a524-49df21d05939",
@@ -391,7 +391,7 @@ final List<Map<String, dynamic>> characters = [
       "You-Know-Who",
       "He Who Must Not Be Named",
       "the Dark Lord",
-      "the Heir of Slytherin"
+      "the Heir of Slytherin",
     ],
     "species": "human",
     "gender": "male",
@@ -409,6 +409,6 @@ final List<Map<String, dynamic>> characters = [
     "actor": "Ralph Fiennes",
     "alternate_actors": [],
     "alive": false,
-    "image": "https://ik.imagekit.io/hpapi/voldemort.jpg"
+    "image": "https://ik.imagekit.io/hpapi/voldemort.jpg",
   },
 ];

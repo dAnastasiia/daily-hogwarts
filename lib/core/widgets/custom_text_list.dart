@@ -10,7 +10,7 @@ class CustomTextList extends StatelessWidget {
   final String title;
   final List<Widget> entries;
 
-  List<Widget> getPrettifiedWidgets(List<Widget> widgets) {
+  List<Widget> _getPrettifiedWidgets(List<Widget> widgets) {
     if (widgets.isEmpty) return [];
 
     final List<Widget> spacedWidgets = [];
@@ -36,7 +36,7 @@ class CustomTextList extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        ...getPrettifiedWidgets(entries),
+        ..._getPrettifiedWidgets(entries),
       ],
     );
   }
