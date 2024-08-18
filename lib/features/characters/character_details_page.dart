@@ -1,3 +1,4 @@
+import 'package:daily_hogwarts/core/models/character_model.dart';
 import 'package:daily_hogwarts/core/widgets/custom_text_list.dart';
 import 'package:daily_hogwarts/core/widgets/indented_text.dart';
 import 'package:daily_hogwarts/core/widgets/prettified_field_value.dart';
@@ -9,7 +10,7 @@ class CharacterDetailsPage extends StatelessWidget {
     required this.character,
   });
 
-  final Map<String, dynamic> character;
+  final Character character;
 
   String _getValue(dynamic value) {
     if (value is int || value is double) {
@@ -23,7 +24,7 @@ class CharacterDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(character['name']),
+        title: Text(character.name),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -33,7 +34,7 @@ class CharacterDetailsPage extends StatelessWidget {
             Center(
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
-                  character['image'],
+                  character.image,
                 ),
                 radius: 75,
               ),
@@ -41,32 +42,32 @@ class CharacterDetailsPage extends StatelessWidget {
             const SizedBox(height: 32),
             PrettifiedFieldValue(
               title: "House: ",
-              value: character["house"],
+              value: character.house,
             ),
             const SizedBox(height: 8),
             PrettifiedFieldValue(
               title: "Patronus: ",
-              value: _getValue(character['patronus']),
+              value: _getValue(character.patronus),
             ),
             const SizedBox(height: 24),
             CustomTextList(
               title: "Wand",
               entries: [
                 IndentedText(
-                  value: 'Wood: ${_getValue(character['wand']['wood'])}',
+                  value: 'Wood: ${_getValue(character.wand.wood)}',
                 ),
                 IndentedText(
-                  value: 'Core: ${_getValue(character['wand']['core'])}',
+                  value: 'Core: ${_getValue(character.wand.core)}',
                 ),
                 IndentedText(
-                  value: 'Length: ${_getValue(character['wand']['length'])}',
+                  value: 'Length: ${_getValue(character.wand.length)}',
                 ),
               ],
             ),
             const SizedBox(height: 24),
             PrettifiedFieldValue(
               title: "Ancestry: ",
-              value: _getValue(character['ancestry']),
+              value: _getValue(character.ancestry),
             ),
           ],
         ),

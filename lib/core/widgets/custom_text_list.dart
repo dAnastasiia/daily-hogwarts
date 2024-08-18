@@ -10,21 +10,21 @@ class CustomTextList extends StatelessWidget {
   final String title;
   final List<Widget> entries;
 
-  List<Widget> _getPrettifiedWidgets(List<Widget> widgets) {
-    if (widgets.isEmpty) return [];
-
-    final List<Widget> spacedWidgets = [];
-    for (int i = 0; i < widgets.length; i++) {
-      spacedWidgets.add(widgets[i]);
-      if (i < widgets.length - 1) {
-        spacedWidgets.add(const SizedBox(height: 4));
-      }
-    }
-    return spacedWidgets;
-  }
-
   @override
   Widget build(BuildContext context) {
+    List<Widget> getPrettifiedWidgets(List<Widget> widgets) {
+      if (widgets.isEmpty) return [];
+
+      final List<Widget> spacedWidgets = [];
+      for (int i = 0; i < widgets.length; i++) {
+        spacedWidgets.add(widgets[i]);
+        if (i < widgets.length - 1) {
+          spacedWidgets.add(const SizedBox(height: 4));
+        }
+      }
+      return spacedWidgets;
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -36,7 +36,7 @@ class CustomTextList extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        ..._getPrettifiedWidgets(entries),
+        ...getPrettifiedWidgets(entries),
       ],
     );
   }

@@ -1,3 +1,4 @@
+import 'package:daily_hogwarts/core/models/character_model.dart';
 import 'package:flutter/material.dart';
 
 class CharacterItem extends StatelessWidget {
@@ -7,7 +8,7 @@ class CharacterItem extends StatelessWidget {
     required this.onTap,
   });
 
-  final Map<String, dynamic> character;
+  final Character character;
   final VoidCallback onTap;
 
   @override
@@ -28,18 +29,18 @@ class CharacterItem extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             backgroundImage: NetworkImage(
-              character['image'],
+              character.image,
             ),
           ),
           title: Text(
-            character['name'],
+            character.name,
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           subtitle: Text(
-            character['house'],
+            character.house,
             style: const TextStyle(
               fontSize: 14,
             ),

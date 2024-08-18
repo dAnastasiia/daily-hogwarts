@@ -1,15 +1,16 @@
-import 'package:daily_hogwarts/features/characters/character_details_page.dart';
+import 'package:daily_hogwarts/core/models/character_model.dart';
+import 'package:daily_hogwarts/features/characters/ui/character_item.dart';
 import 'package:flutter/material.dart';
-
-import 'character_item.dart';
 
 class CharacterList extends StatelessWidget {
   const CharacterList({
     super.key,
     required this.characters,
+    required this.onClick,
   });
 
-  final List<Map<String, dynamic>> characters;
+  final List<Character> characters;
+  final Function(Character) onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +19,7 @@ class CharacterList extends StatelessWidget {
       itemBuilder: (context, index) {
         return CharacterItem(
           character: characters[index],
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CharacterDetailsPage(
-                  character: characters[index],
-                ),
-              ),
-            );
-          },
+          onTap: () => onClick(characters[index]),
         );
       },
     );
