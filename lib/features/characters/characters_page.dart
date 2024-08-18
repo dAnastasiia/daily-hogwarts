@@ -1,3 +1,6 @@
+import 'package:daily_hogwarts/core/utils/mock_characters.dart';
+import 'package:daily_hogwarts/features/characters/character_details_page.dart';
+import 'package:daily_hogwarts/features/characters/ui/character_list.dart';
 import 'package:flutter/material.dart';
 
 class CharactersPage extends StatelessWidget {
@@ -5,8 +8,18 @@ class CharactersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Characters Page"),
+    return CharacterList(
+      characters: characters,
+      onClick: (character) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CharacterDetailsPage(
+              character: character,
+            ),
+          ),
+        );
+      },
     );
   }
 }
