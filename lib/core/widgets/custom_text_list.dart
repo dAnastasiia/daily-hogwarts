@@ -1,3 +1,4 @@
+import 'package:daily_hogwarts/core/utils/methods/getPrettifiedWidgetsList.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextList extends StatelessWidget {
@@ -12,19 +13,6 @@ class CustomTextList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> getPrettifiedWidgets(List<Widget> widgets) {
-      if (widgets.isEmpty) return [];
-
-      final List<Widget> spacedWidgets = [];
-      for (int i = 0; i < widgets.length; i++) {
-        spacedWidgets.add(widgets[i]);
-        if (i < widgets.length - 1) {
-          spacedWidgets.add(const SizedBox(height: 4));
-        }
-      }
-      return spacedWidgets;
-    }
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -36,7 +24,7 @@ class CustomTextList extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        ...getPrettifiedWidgets(entries),
+        ...getPrettifiedWidgetsList(entries: entries, spacing: 4.0),
       ],
     );
   }
