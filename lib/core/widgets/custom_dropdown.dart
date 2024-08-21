@@ -16,7 +16,7 @@ class CustomDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       value: value,
-      onChanged: (newValue) {},
+      onChanged: onChanged,
       items: items.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
