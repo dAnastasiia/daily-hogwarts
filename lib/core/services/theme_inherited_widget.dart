@@ -4,7 +4,6 @@ class ThemeNotifier extends ValueNotifier<ThemeMode> {
   ThemeNotifier(super.value);
 
   void switchTheme(ThemeMode themeMode) {
-    debugPrint("$themeMode");
     value = themeMode;
   }
 }
