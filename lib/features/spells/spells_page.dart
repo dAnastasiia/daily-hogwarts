@@ -1,3 +1,4 @@
+import 'package:daily_hogwarts/features/spells/ui/spell_card.dart';
 import 'package:flutter/material.dart';
 
 class SpellsPage extends StatelessWidget {
@@ -6,7 +7,7 @@ class SpellsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Spells Page"),
+      child: SpellCard(name: "Accio", description: "Summons objects"),
     );
   }
 }
