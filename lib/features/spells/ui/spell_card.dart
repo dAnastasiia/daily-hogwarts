@@ -13,40 +13,41 @@ class SpellCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 4,
+      margin: const EdgeInsets.symmetric(vertical: 48, horizontal: 16),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               name,
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 24),
             Text(
               description,
+              style: const TextStyle(fontSize: 18),
             ),
             const Spacer(),
-            // Bottom Buttons (Cross and Star)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
                   icon: const Icon(Icons.clear),
                   color: Colors.red,
-                  iconSize: 40,
-                  onPressed: () {
-                    // Handle cross action
-                  },
+                  iconSize: 48,
+                  onPressed: () {},
                 ),
                 IconButton(
-                  icon: const Icon(Icons.spa_outlined),
+                  icon: const Icon(Icons.local_fire_department_rounded),
                   color: Colors.yellow.shade700,
-                  iconSize: 40,
-                  onPressed: () {
-                    // Handle star action
-                  },
+                  iconSize: 48,
+                  onPressed: () {},
                 ),
               ],
             ),
