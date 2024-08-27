@@ -9,7 +9,7 @@ class SpellsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CardSwiperController cardSwiperController = CardSwiperController();
+    final CardSwiperController cardSwiperController = CardSwiperController();
 
     return ChangeNotifierProvider(
       create: (_) {
