@@ -51,10 +51,12 @@ class SpellsPage extends StatelessWidget {
           numberOfCardsDisplayed: isLastSpell ? 1 : 2,
           backCardOffset: const Offset(0, 48),
           onSwipe: (_, __, direction) {
-            if (direction == CardSwiperDirection.right) {
-              spellsProvider.castSpell();
-            } else {
-              spellsProvider.removeSpell();
+            if (context.mounted) {
+              if (direction == CardSwiperDirection.right) {
+                spellsProvider.castSpell();
+              } else {
+                spellsProvider.removeSpell();
+              }
             }
 
             return true;
