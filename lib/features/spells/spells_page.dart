@@ -4,13 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:provider/provider.dart';
 
-class SpellsPage extends StatelessWidget {
+class SpellsPage extends StatefulWidget {
   const SpellsPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final CardSwiperController cardSwiperController = CardSwiperController();
+  State<SpellsPage> createState() => _SpellsPageState();
+}
 
+class _SpellsPageState extends State<SpellsPage> {
+  final CardSwiperController cardSwiperController = CardSwiperController();
+
+  @override
+  void dispose() {
+    cardSwiperController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext outerContext) {
     return ChangeNotifierProvider(
       create: (_) {
         final provider = SpellsViewModel();
@@ -51,18 +62,21 @@ class SpellsPage extends StatelessWidget {
           numberOfCardsDisplayed: isLastSpell ? 1 : 2,
           backCardOffset: const Offset(0, 48),
           onSwipe: (_, __, direction) {
-            if (context.mounted) {
-              if (direction == CardSwiperDirection.right) {
-                spellsProvider.castSpell();
-              } else {
-                spellsProvider.removeSpell();
-              }
+            if (direction == CardSwiperDirection.right) {
+              spellsProvider.castSpell();
+            } else {
+              spellsProvider.removeSpell();
             }
 
             return true;
           },
           cardBuilder: (_, __, ___, ____) => Center(
-            child: SpellCard(cardSwiperController: cardSwiperController),
+            child: SpellCard(
+              onSwipeLeft: () =>
+                  cardSwiperController.swipe(CardSwiperDirection.left),
+              onSwipeRight: () =>
+                  cardSwiperController.swipe(CardSwiperDirection.right),
+            ),
           ),
         );
       },
