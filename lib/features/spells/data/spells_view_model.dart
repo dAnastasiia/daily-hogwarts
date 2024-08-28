@@ -2,7 +2,7 @@ import 'package:daily_hogwarts/core/models/spell_model.dart';
 import 'package:daily_hogwarts/core/utils/mock_spells.dart' as mock;
 import 'package:flutter/material.dart';
 
-class SpellsProvider with ChangeNotifier {
+class SpellsViewModel with ChangeNotifier {
   List<Spell> _spells = [];
   int _currentIndex = 0;
 

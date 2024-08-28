@@ -1,5 +1,5 @@
 import 'package:daily_hogwarts/core/models/spell_model.dart';
-import 'package:daily_hogwarts/features/spells/data/spells_provider.dart';
+import 'package:daily_hogwarts/features/spells/data/spells_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +14,7 @@ class SpellCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<SpellsProvider, Spell>(
+    return Selector<SpellsViewModel, Spell>(
       selector: (_, provider) => provider.spell,
       builder: (_, spell, ___) => Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
