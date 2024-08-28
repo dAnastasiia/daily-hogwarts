@@ -6,12 +6,12 @@ import 'package:provider/provider.dart';
 class SpellCard extends StatelessWidget {
   const SpellCard({
     super.key,
-    required this.onSwipeLeft,
-    required this.onSwipeRight,
+    required this.onRemove,
+    required this.onCast,
   });
 
-  final VoidCallback onSwipeLeft;
-  final VoidCallback onSwipeRight;
+  final VoidCallback onRemove;
+  final VoidCallback onCast;
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +46,13 @@ class SpellCard extends StatelessWidget {
                     icon: const Icon(Icons.clear),
                     color: Colors.red,
                     iconSize: 48,
-                    onPressed: onSwipeLeft,
+                    onPressed: onRemove,
                   ),
                   IconButton(
                     icon: const Icon(Icons.local_fire_department_rounded),
                     color: Colors.yellow.shade700,
                     iconSize: 48,
-                    onPressed: onSwipeRight,
+                    onPressed: onCast,
                   ),
                 ],
               ),

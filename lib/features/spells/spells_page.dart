@@ -12,11 +12,11 @@ class SpellsPage extends StatefulWidget {
 }
 
 class _SpellsPageState extends State<SpellsPage> {
-  final CardSwiperController cardSwiperController = CardSwiperController();
+  final CardSwiperController _cardSwiperController = CardSwiperController();
 
   @override
   void dispose() {
-    cardSwiperController.dispose();
+    _cardSwiperController.dispose();
     super.dispose();
   }
 
@@ -53,7 +53,7 @@ class _SpellsPageState extends State<SpellsPage> {
         }
 
         return CardSwiper(
-          controller: cardSwiperController,
+          controller: _cardSwiperController,
           cardsCount: spells.length,
           allowedSwipeDirection: const AllowedSwipeDirection.symmetric(
             horizontal: true,
@@ -72,10 +72,10 @@ class _SpellsPageState extends State<SpellsPage> {
           },
           cardBuilder: (_, __, ___, ____) => Center(
             child: SpellCard(
-              onSwipeLeft: () =>
-                  cardSwiperController.swipe(CardSwiperDirection.left),
-              onSwipeRight: () =>
-                  cardSwiperController.swipe(CardSwiperDirection.right),
+              onRemove: () =>
+                  _cardSwiperController.swipe(CardSwiperDirection.left),
+              onCast: () =>
+                  _cardSwiperController.swipe(CardSwiperDirection.right),
             ),
           ),
         );
