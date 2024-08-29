@@ -1,37 +1,22 @@
 import 'package:daily_hogwarts/features/spells/data/spells_view_model.dart';
-import 'package:daily_hogwarts/features/spells/ui/spell_card.dart';
+import 'package:daily_hogwarts/features/spells/ui/spells_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:provider/provider.dart';
 
-class SpellsPage extends StatefulWidget {
+class SpellsPage extends StatelessWidget {
   const SpellsPage({super.key});
 
   @override
-  State<SpellsPage> createState() => _SpellsPageState();
-}
-
-class _SpellsPageState extends State<SpellsPage> {
-  final CardSwiperController _cardSwiperController = CardSwiperController();
-
-  @override
-  void dispose() {
-    _cardSwiperController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext outerContext) {
+  Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) {
         final provider = SpellsViewModel();
         provider.fetchSpells();
         return provider;
       },
-      builder: (context, __) {
-        final spellsProvider = context.watch<SpellsViewModel>();
+      builder: (notifierContext, __) {
+        final spellsProvider = notifierContext.watch<SpellsViewModel>();
         final spells = spellsProvider.spells;
-        final isLastSpell = spells.length == 1;
 
         if (spells.isEmpty) {
           return Center(
@@ -52,32 +37,9 @@ class _SpellsPageState extends State<SpellsPage> {
           );
         }
 
-        return CardSwiper(
-          controller: _cardSwiperController,
-          cardsCount: spells.length,
-          allowedSwipeDirection: const AllowedSwipeDirection.symmetric(
-            horizontal: true,
-            vertical: false,
-          ),
-          numberOfCardsDisplayed: isLastSpell ? 1 : 2,
-          backCardOffset: const Offset(0, 48),
-          onSwipe: (_, __, direction) {
-            if (direction == CardSwiperDirection.right) {
-              spellsProvider.castSpell();
-            } else {
-              spellsProvider.removeSpell();
-            }
-
-            return true;
-          },
-          cardBuilder: (_, __, ___, ____) => Center(
-            child: SpellCard(
-              onRemove: () =>
-                  _cardSwiperController.swipe(CardSwiperDirection.left),
-              onCast: () =>
-                  _cardSwiperController.swipe(CardSwiperDirection.right),
-            ),
-          ),
+        return SpellsSwiper(
+          cardsTotal: spells.length,
+          isLastSpell: spells.length == 1,
         );
       },
     );
