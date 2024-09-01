@@ -1,4 +1,4 @@
-import 'package:daily_hogwarts/core/widgets/custom_filled_button.dart';
+import 'package:daily_hogwarts/core/ui/custom_filled_button.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:daily_hogwarts/core/models/character_model.dart';
+import 'package:daily_hogwarts/core/data/character_model.dart';
 
 final List<Character> characters = [
   Character(

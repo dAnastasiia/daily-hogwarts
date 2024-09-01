@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class SpellCard extends StatelessWidget {
+  final String name;
+  final String description;
+
   const SpellCard({
     super.key,
     required this.name,
     required this.description,
   });
-
-  final String name;
-  final String description;
 
   @override
   Widget build(BuildContext context) {

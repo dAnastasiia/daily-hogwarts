@@ -1,5 +1,5 @@
-import 'package:daily_hogwarts/core/utils/mock_spells.dart';
 import 'package:daily_hogwarts/features/spells/ui/spell_card.dart';
+import 'package:daily_hogwarts/features/spells/utils/mock_spells.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 

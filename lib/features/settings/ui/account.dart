@@ -1,4 +1,4 @@
-import 'package:daily_hogwarts/core/widgets/custom_card.dart';
+import 'package:daily_hogwarts/core/ui/custom_card.dart';
 import 'package:flutter/material.dart';
 
 class Account extends StatelessWidget {
@@ -34,13 +34,13 @@ class Account extends StatelessWidget {
 }
 
 class _MenuItem extends StatelessWidget {
+  final String itemTitle;
+  final VoidCallback onTap;
+
   const _MenuItem({
     required this.itemTitle,
     required this.onTap,
   });
-
-  final String itemTitle;
-  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {

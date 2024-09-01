@@ -1,6 +1,6 @@
-import 'package:daily_hogwarts/core/utils/methods/getPrettifiedWidgetsList.dart';
-import 'package:daily_hogwarts/core/widgets/custom_filled_button.dart';
-import 'package:daily_hogwarts/core/widgets/custom_text_field.dart';
+import 'package:daily_hogwarts/core/ui/custom_filled_button.dart';
+import 'package:daily_hogwarts/core/ui/custom_text_field.dart';
+import 'package:daily_hogwarts/core/utils/methods/get_prettified_widgets_list.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatelessWidget {
