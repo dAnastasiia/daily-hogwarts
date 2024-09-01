@@ -9,11 +9,7 @@ class SpellsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) {
-        final provider = SpellsViewModel();
-        provider.fetchSpells();
-        return provider;
-      },
+      create: (_) => SpellsViewModel(),
       builder: (notifierContext, __) {
         final spellsProvider = notifierContext.watch<SpellsViewModel>();
         final spells = spellsProvider.spells;
