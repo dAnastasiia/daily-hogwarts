@@ -1,4 +1,4 @@
-import 'package:daily_hogwarts/core/models/spell_model.dart';
+import 'package:daily_hogwarts/features/spells/data/spell_model.dart';
 
 final List<Spell> spells = [
   Spell(

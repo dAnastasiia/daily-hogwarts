@@ -1,6 +1,6 @@
-import 'package:daily_hogwarts/core/services/theme_inherited_widget.dart';
-import 'package:daily_hogwarts/core/widgets/custom_card.dart';
-import 'package:daily_hogwarts/core/widgets/custom_dropdown.dart';
+import 'package:daily_hogwarts/core/model/theme_inherited_widget.dart';
+import 'package:daily_hogwarts/core/ui/custom_card.dart';
+import 'package:daily_hogwarts/core/ui/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 
 class Customization extends StatelessWidget {

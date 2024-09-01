@@ -1,6 +1,6 @@
-import 'package:daily_hogwarts/core/services/theme_inherited_widget.dart';
+import 'package:daily_hogwarts/core/model/theme_inherited_widget.dart';
+import 'package:daily_hogwarts/core/ui/custom_navigation_bar.dart';
 import 'package:daily_hogwarts/core/utils/styles.dart';
-import 'package:daily_hogwarts/core/widgets/custom_navigation_bar.dart';
 import 'package:daily_hogwarts/features/characters/characters_page.dart';
 import 'package:daily_hogwarts/features/house/house_page.dart';
 import 'package:daily_hogwarts/features/settings/settings_page.dart';

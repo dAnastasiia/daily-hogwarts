@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class PrettifiedFieldValue extends StatelessWidget {
+  final String title;
+  final String? value;
+
   const PrettifiedFieldValue({
     super.key,
     required this.title,
     this.value,
   });
-
-  final String title;
-  final String? value;
 
   @override
   Widget build(BuildContext context) {

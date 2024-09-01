@@ -1,16 +1,16 @@
-import 'package:daily_hogwarts/core/models/character_model.dart';
+import 'package:daily_hogwarts/core/data/character_model.dart';
 import 'package:daily_hogwarts/features/characters/ui/character_item.dart';
 import 'package:flutter/material.dart';
 
 class CharacterList extends StatelessWidget {
+  final List<Character> characters;
+  final Function(Character) onClick;
+
   const CharacterList({
     super.key,
     required this.characters,
     required this.onClick,
   });
-
-  final List<Character> characters;
-  final Function(Character) onClick;
 
   @override
   Widget build(BuildContext context) {
