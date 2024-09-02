@@ -1,4 +1,4 @@
-import 'package:daily_hogwarts/core/utils/methods/getPrettifiedWidgetsList.dart';
+import 'package:daily_hogwarts/core/utils/methods/get_prettified_widgets_list.dart';
 import 'package:daily_hogwarts/features/settings/ui/account.dart';
 import 'package:daily_hogwarts/features/settings/ui/customization.dart';
 import 'package:daily_hogwarts/features/settings/ui/main_info.dart';

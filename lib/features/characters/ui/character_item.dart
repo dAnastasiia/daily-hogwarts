@@ -1,15 +1,15 @@
-import 'package:daily_hogwarts/core/models/character_model.dart';
+import 'package:daily_hogwarts/core/data/character_model.dart';
 import 'package:flutter/material.dart';
 
 class CharacterItem extends StatelessWidget {
+  final Character character;
+  final VoidCallback onTap;
+
   const CharacterItem({
     super.key,
     required this.character,
     required this.onTap,
   });
-
-  final Character character;
-  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {

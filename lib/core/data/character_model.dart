@@ -71,9 +71,9 @@ class Character {
 }
 
 class Wand {
-  late final String wood;
-  late final String core;
-  late final double? length;
+  final String wood;
+  final String core;
+  final double? length;
 
   Wand({
     required this.wood,
@@ -81,9 +81,11 @@ class Wand {
     this.length,
   });
 
-  Wand.fromJson(Map<String, dynamic> data) {
-    wood = data['wood'];
-    core = data['core'];
-    length = data['length'];
+  factory Wand.fromJson(Map<String, dynamic> data) {
+    return Wand(
+      wood: data['wood'],
+      core: data['core'],
+      length: data['length'],
+    );
   }
 }

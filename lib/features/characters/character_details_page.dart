@@ -1,16 +1,16 @@
-import 'package:daily_hogwarts/core/models/character_model.dart';
-import 'package:daily_hogwarts/core/widgets/custom_text_list.dart';
-import 'package:daily_hogwarts/core/widgets/indented_text.dart';
-import 'package:daily_hogwarts/core/widgets/prettified_field_value.dart';
+import 'package:daily_hogwarts/core/data/character_model.dart';
+import 'package:daily_hogwarts/core/ui/custom_text_list.dart';
+import 'package:daily_hogwarts/core/ui/indented_text.dart';
+import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
 import 'package:flutter/material.dart';
 
 class CharacterDetailsPage extends StatelessWidget {
+  final Character character;
+
   const CharacterDetailsPage({
     super.key,
     required this.character,
   });
-
-  final Character character;
 
   String _getValue(dynamic value) {
     if (value is int || value is double) {

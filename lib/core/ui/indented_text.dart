@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class IndentedText extends StatelessWidget {
+  final String value;
+
   const IndentedText({
     super.key,
     required this.value,
   });
-
-  final String value;
 
   @override
   Widget build(BuildContext context) {

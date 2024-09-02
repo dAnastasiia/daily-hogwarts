@@ -1,15 +1,15 @@
-import 'package:daily_hogwarts/core/utils/methods/getPrettifiedWidgetsList.dart';
+import 'package:daily_hogwarts/core/utils/methods/get_prettified_widgets_list.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextList extends StatelessWidget {
+  final String title;
+  final List<Widget> entries;
+
   const CustomTextList({
     super.key,
     required this.title,
     required this.entries,
   });
-
-  final String title;
-  final List<Widget> entries;
 
   @override
   Widget build(BuildContext context) {
