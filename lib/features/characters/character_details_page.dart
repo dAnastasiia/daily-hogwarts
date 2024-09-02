@@ -2,14 +2,16 @@ import 'package:daily_hogwarts/core/data/character_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_list.dart';
 import 'package:daily_hogwarts/core/ui/indented_text.dart';
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
+import 'package:daily_hogwarts/core/utils/mock_characters.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CharacterDetailsPage extends StatelessWidget {
-  final Character character;
+  final String id;
 
   const CharacterDetailsPage({
     super.key,
-    required this.character,
+    required this.id,
   });
 
   String _getValue(dynamic value) {
@@ -20,11 +22,38 @@ class CharacterDetailsPage extends StatelessWidget {
     return (value == null || value.isEmpty) ? 'unknown' : value.toString();
   }
 
+  // * Temporary solution before implementing API calls
+  Character? _getCharacterById(String id) {
+    return characters.firstWhere(
+      (character) => character.id == id,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final character = _getCharacterById(id);
+
+    if (character == null) {
+      return Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () => context.pop(),
+          ),
+        ),
+        body: const Center(
+          child: Text('Character with is not found'),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(character.name),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => context.pop(),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

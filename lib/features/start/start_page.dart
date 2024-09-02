@@ -1,5 +1,7 @@
 import 'package:daily_hogwarts/core/ui/custom_filled_button.dart';
+import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -31,14 +33,14 @@ class StartPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   CustomFilledButton(
                     title: 'Login',
-                    onPressed: () {},
+                    onPressed: () => context.goNamed(Routes.login.name),
                     backgroundColor: Colors.deepPurple,
                     foregroundColor: Colors.white,
                   ),
                   const SizedBox(height: 12),
                   CustomFilledButton(
                     title: 'Sign Up',
-                    onPressed: () {},
+                    onPressed: () => context.pushNamed(Routes.signup.name),
                     backgroundColor: Colors.deepPurple.shade100,
                     foregroundColor: Colors.black,
                   ),
