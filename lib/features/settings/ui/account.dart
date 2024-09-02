@@ -1,34 +1,41 @@
+import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Account extends StatelessWidget {
   const Account({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CustomCard(
-      title: 'Account',
-      children: [
-        _MenuItem(
-          itemTitle: 'Privacy Policy',
-          onTap: () {},
-        ),
-        _MenuItem(
-          itemTitle: 'Terms and Conditions',
-          onTap: () {},
-        ),
-        const Divider(),
-        ListTile(
-          title: const Text(
-            'Logout',
-            style: TextStyle(
-              color: Colors.red,
-            ),
+    return Consumer<AuthViewModel>(
+      builder: (_, authProvider, __) => CustomCard(
+        title: 'Account',
+        children: [
+          _MenuItem(
+            itemTitle: 'Privacy Policy',
+            onTap: () {},
           ),
-          leading: const Icon(Icons.logout, color: Colors.red),
-          onTap: () {},
-        ),
-      ],
+          _MenuItem(
+            itemTitle: 'Terms and Conditions',
+            onTap: () {},
+          ),
+          const Divider(),
+          ListTile(
+            title: const Text(
+              'Logout',
+              style: TextStyle(
+                color: Colors.red,
+              ),
+            ),
+            leading: const Icon(Icons.logout, color: Colors.red),
+            onTap: () {
+              // * Success logout imitation
+              authProvider.logout();
+            },
+          ),
+        ],
+      ),
     );
   }
 }

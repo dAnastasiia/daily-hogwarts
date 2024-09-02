@@ -1,4 +1,5 @@
-import 'package:daily_hogwarts/core/model/theme_inherited_widget.dart';
+import 'package:daily_hogwarts/core/model/auth_view_model.dart';
+import 'package:daily_hogwarts/core/model/theme_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_navigation_bar.dart';
 import 'package:daily_hogwarts/core/utils/styles.dart';
 import 'package:daily_hogwarts/features/characters/characters_page.dart';
@@ -7,10 +8,19 @@ import 'package:daily_hogwarts/features/settings/settings_page.dart';
 import 'package:daily_hogwarts/features/spells/spells_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ThemeInheritedWidget(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ThemeViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => AuthViewModel(),
+        ),
+      ],
       child: const MyApp(),
     ),
   );
@@ -21,49 +31,43 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeNotifier themeNotifier =
-        ThemeInheritedWidget.of(context).themeNotifier;
+    final ThemeMode themeMode = context.watch<ThemeViewModel>().themeMode;
 
-    return ValueListenableBuilder<ThemeMode>(
-      valueListenable: themeNotifier,
-      builder: (context, themeMode, ___) {
-        return MaterialApp(
-          title: 'Daily Hogwarts',
-          themeMode: themeMode,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.deepPurpleAccent,
-              brightness: Brightness.light,
-            ),
-            textTheme: GoogleFonts.lexendTextTheme(
-              Theme.of(context).textTheme.apply(
-                    displayColor: Colors.black,
-                    bodyColor: Colors.black,
-                  ),
-            ), // TextTheme(
-            navigationBarTheme: NavigationBarThemeData(
-              labelTextStyle: navLabelTextStyle,
-            ),
-          ),
-          darkTheme: ThemeData(
-            brightness: Brightness.dark,
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.deepPurpleAccent,
-              brightness: Brightness.dark,
-            ),
-            textTheme: GoogleFonts.lexendTextTheme(
-              Theme.of(context).textTheme.apply(
-                    displayColor: Colors.white,
-                    bodyColor: Colors.white,
-                  ),
-            ),
-            navigationBarTheme: NavigationBarThemeData(
-              labelTextStyle: navLabelTextStyle,
-            ),
-          ),
-          home: const MainContainer(),
-        );
-      },
+    return MaterialApp(
+      title: 'Daily Hogwarts',
+      themeMode: themeMode,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurpleAccent,
+          brightness: Brightness.light,
+        ),
+        textTheme: GoogleFonts.lexendTextTheme(
+          Theme.of(context).textTheme.apply(
+                displayColor: Colors.black,
+                bodyColor: Colors.black,
+              ),
+        ), // TextTheme(
+        navigationBarTheme: NavigationBarThemeData(
+          labelTextStyle: navLabelTextStyle,
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurpleAccent,
+          brightness: Brightness.dark,
+        ),
+        textTheme: GoogleFonts.lexendTextTheme(
+          Theme.of(context).textTheme.apply(
+                displayColor: Colors.white,
+                bodyColor: Colors.white,
+              ),
+        ),
+        navigationBarTheme: NavigationBarThemeData(
+          labelTextStyle: navLabelTextStyle,
+        ),
+      ),
+      home: const MainContainer(),
     );
   }
 }

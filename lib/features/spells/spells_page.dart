@@ -8,19 +8,17 @@ class SpellsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: CardSwiper(
-        cardsCount: spells.length,
-        allowedSwipeDirection: const AllowedSwipeDirection.symmetric(
-          horizontal: true,
-          vertical: false,
-        ),
-        backCardOffset: const Offset(0, 48),
-        cardBuilder: (_, __, ___, ____) => const Center(
-          child: SpellCard(
-            name: "Accio",
-            description: "Summons objects",
-          ),
+    return CardSwiper(
+      cardsCount: spells.length,
+      allowedSwipeDirection: const AllowedSwipeDirection.symmetric(
+        horizontal: true,
+        vertical: false,
+      ),
+      backCardOffset: const Offset(0, 48),
+      cardBuilder: (_, __, ___, ____) => const Center(
+        child: SpellCard(
+          name: "Accio",
+          description: "Summons objects",
         ),
       ),
     );
