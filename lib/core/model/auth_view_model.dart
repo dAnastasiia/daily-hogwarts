@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // * It will be replaced with the real authorization logic later
 class AuthViewModel extends ChangeNotifier {
-  bool _isAuthenticated = true;
+  bool _isAuthenticated = false;
 
   bool get isAuthenticated => _isAuthenticated;
 
