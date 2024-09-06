@@ -16,10 +16,11 @@ class CharactersPage extends StatelessWidget {
         return CharacterItem(
           character: character,
           onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => CharacterDetailsPage(character: character),
-              )),
+            context,
+            MaterialPageRoute(
+              builder: (_) => CharacterDetailsPage(character: character),
+            ),
+          ),
         );
       },
     );
