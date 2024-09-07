@@ -1,5 +1,5 @@
+import 'package:daily_hogwarts/core/utils/mock_spells.dart' as mock;
 import 'package:daily_hogwarts/features/spells/data/spell_model.dart';
-import 'package:daily_hogwarts/features/spells/utils/mock_spells.dart' as mock;
 import 'package:flutter/material.dart';
 
 class SpellsViewModel with ChangeNotifier {
