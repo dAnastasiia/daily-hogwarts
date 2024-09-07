@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeMode themeMode = context.watch<ThemeViewModel>().themeMode;
+    final Color seedColor = context.read<AuthViewModel>().house.color;
 
     return MaterialApp.router(
       routerConfig: router,
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       themeMode: themeMode,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurpleAccent,
+          seedColor: seedColor,
           brightness: Brightness.light,
         ),
         textTheme: GoogleFonts.lexendTextTheme(
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurpleAccent,
+          seedColor: seedColor,
           brightness: Brightness.dark,
         ),
         textTheme: GoogleFonts.lexendTextTheme(

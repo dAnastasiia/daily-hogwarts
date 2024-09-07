@@ -20,4 +20,16 @@ final List<Spell> spells = [
         "Causes an object to levitate; but remember what Hermione said: "
         "\"It's Wing-gar-dium Levi-o-sa, make the 'gar' nice and long.'\"",
   ),
+  Spell(
+    id: "7324e645-8f41-4c83-a367-0d10a72906ff",
+    name: "Diffindo",
+    description: "Used to precisely cut an object",
+  ),
+  Spell(
+    id: "638072b9-b7ac-405d-914b-d9293c5f9d25",
+    name: "Disillusionment "
+        "Charm",
+    description:
+        "Causes the target to take on the appearance of its surroundings",
+  )
 ];
