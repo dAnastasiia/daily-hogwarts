@@ -9,7 +9,7 @@ class FavouriteSpells extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final orientation = MediaQuery.of(context).orientation;
+    final orientation = MediaQuery.orientationOf(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),

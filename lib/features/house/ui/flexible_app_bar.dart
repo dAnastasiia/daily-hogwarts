@@ -9,7 +9,7 @@ class FlexibleAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final orientation = MediaQuery.of(context).orientation;
+    final orientation = MediaQuery.orientationOf(context);
 
     return Selector<AuthViewModel, Houses>(
       selector: (_, provider) => provider.house,
