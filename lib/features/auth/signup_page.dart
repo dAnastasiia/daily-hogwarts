@@ -2,7 +2,9 @@ import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_filled_button.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_field.dart';
 import 'package:daily_hogwarts/core/utils/methods/get_prettified_widgets_list.dart';
+import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class SignupPage extends StatelessWidget {
@@ -14,7 +16,7 @@ class SignupPage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
+          onPressed: context.pop,
         ),
       ),
       body: Consumer<AuthViewModel>(
@@ -77,6 +79,7 @@ class SignupPage extends StatelessWidget {
                 onPressed: () {
                   // * Success signup imitation
                   authProvider.signup();
+                  context.goNamed(Routes.home.name);
                 },
                 backgroundColor: Colors.deepPurple,
                 foregroundColor: Colors.white,

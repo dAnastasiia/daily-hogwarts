@@ -31,5 +31,5 @@ final List<Spell> spells = [
         "Charm",
     description:
         "Causes the target to take on the appearance of its surroundings",
-  )
+  ),
 ];

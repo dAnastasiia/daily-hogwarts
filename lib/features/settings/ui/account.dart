@@ -1,6 +1,8 @@
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_card.dart';
+import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class Account extends StatelessWidget {
@@ -32,6 +34,7 @@ class Account extends StatelessWidget {
             onTap: () {
               // * Success logout imitation
               authProvider.logout();
+              context.goNamed(Routes.start.name);
             },
           ),
         ],

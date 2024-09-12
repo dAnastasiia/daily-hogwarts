@@ -1,6 +1,8 @@
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
 import 'package:daily_hogwarts/core/utils/mock_characters.dart';
+import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Teachers extends StatelessWidget {
   const Teachers({super.key});
@@ -30,7 +32,10 @@ class Teachers extends StatelessWidget {
               itemBuilder: (_, index) {
                 final teacher = teachers[index];
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () => context.pushNamed(
+                    Routes.characterDetails.name,
+                    pathParameters: {'id': teacher.id},
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [

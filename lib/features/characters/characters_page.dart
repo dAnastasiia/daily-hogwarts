@@ -1,7 +1,8 @@
 import 'package:daily_hogwarts/core/utils/mock_characters.dart';
-import 'package:daily_hogwarts/features/characters/character_details_page.dart';
+import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:daily_hogwarts/features/characters/ui/character_item.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CharactersPage extends StatelessWidget {
   const CharactersPage({super.key});
@@ -15,11 +16,9 @@ class CharactersPage extends StatelessWidget {
 
         return CharacterItem(
           character: character,
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => CharacterDetailsPage(character: character),
-            ),
+          onTap: () => context.pushNamed(
+            Routes.characterDetails.name,
+            pathParameters: {'id': character.id},
           ),
         );
       },
