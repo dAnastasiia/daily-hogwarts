@@ -1,7 +1,9 @@
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
 import 'package:daily_hogwarts/core/utils/custom_icons.dart';
 import 'package:daily_hogwarts/core/utils/mock_characters.dart';
+import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // TODO: update UI, the current one is just mock
 class HousePage extends StatelessWidget {
@@ -57,7 +59,10 @@ class HousePage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final teacher = teachers[index];
                   return GestureDetector(
-                    onTap: () {},
+                    onTap: () => context.pushNamed(
+                      Routes.characterDetails.name,
+                      pathParameters: {'id': teacher.id},
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.only(right: 32.0),
                       child: Column(

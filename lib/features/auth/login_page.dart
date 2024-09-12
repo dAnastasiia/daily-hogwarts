@@ -2,7 +2,9 @@ import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_filled_button.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_field.dart';
 import 'package:daily_hogwarts/core/utils/methods/get_prettified_widgets_list.dart';
+import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -39,12 +41,13 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {
                   // * Success login imitation
                   authProvider.login();
+                  context.goNamed(Routes.home.name);
                 },
                 title: 'Login',
               ),
               const SizedBox(height: 12),
               TextButton(
-                onPressed: () => {},
+                onPressed: () => context.pushNamed(Routes.signup.name),
                 child: const Text("Sign up"),
               ),
             ],
