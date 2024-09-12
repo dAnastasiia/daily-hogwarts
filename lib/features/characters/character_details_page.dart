@@ -38,7 +38,7 @@ class CharacterDetailsPage extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () => context.pop(),
+            onPressed: context.pop,
           ),
         ),
         body: const Center(
@@ -52,7 +52,7 @@ class CharacterDetailsPage extends StatelessWidget {
         title: Text(character.name),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(),
+          onPressed: context.pop,
         ),
       ),
       body: Padding(
