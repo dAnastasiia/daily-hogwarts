@@ -1,6 +1,6 @@
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
-import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/utils/mock_spells.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

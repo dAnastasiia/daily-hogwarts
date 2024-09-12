@@ -1,9 +1,9 @@
 import 'package:daily_hogwarts/core/data/character_model.dart';
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
+import 'package:daily_hogwarts/core/extensions/localization_utils_extension.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_list.dart';
 import 'package:daily_hogwarts/core/ui/indented_text.dart';
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
-import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
-import 'package:daily_hogwarts/core/utils/extensions/localization_utils_extension.dart';
 import 'package:daily_hogwarts/core/utils/mock_characters.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

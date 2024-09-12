@@ -1,5 +1,5 @@
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
-import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/utils/mock_characters.dart';
 import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:flutter/material.dart';

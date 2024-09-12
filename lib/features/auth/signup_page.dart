@@ -1,7 +1,7 @@
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_filled_button.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_field.dart';
-import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/utils/methods/get_prettified_widgets_list.dart';
 import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:flutter/material.dart';

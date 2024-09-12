@@ -1,5 +1,5 @@
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/utils/custom_icons.dart';
-import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

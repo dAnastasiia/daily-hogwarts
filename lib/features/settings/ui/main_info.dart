@@ -1,5 +1,5 @@
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/ui/custom_card.dart';
-import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 
 class MainInfo extends StatelessWidget {

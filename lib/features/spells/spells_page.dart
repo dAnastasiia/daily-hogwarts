@@ -1,4 +1,4 @@
-import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/features/spells/data/spells_view_model.dart';
 import 'package:daily_hogwarts/features/spells/ui/spells_swiper.dart';
 import 'package:flutter/material.dart';

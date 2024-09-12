@@ -1,6 +1,6 @@
 import 'package:daily_hogwarts/core/data/character_model.dart';
-import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
-import 'package:daily_hogwarts/core/utils/extensions/localization_utils_extension.dart';
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
+import 'package:daily_hogwarts/core/extensions/localization_utils_extension.dart';
 import 'package:flutter/material.dart';
 
 class CharacterItem extends StatelessWidget {
