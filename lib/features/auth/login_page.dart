@@ -38,12 +38,14 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 48),
               CustomFilledButton(
+                title: 'Login',
                 onPressed: () {
                   // * Success login imitation
                   authProvider.login();
                   context.goNamed(Routes.home.name);
                 },
-                title: 'Login',
+                backgroundColor: Colors.deepPurple,
+                foregroundColor: Colors.white,
               ),
               const SizedBox(height: 12),
               TextButton(
