@@ -1,0 +1,183 @@
+{
+  "@@locale": "en",
+  "welcome": "Welcome to\nDaily Hogwarts!",
+  "@welcome": {
+    "description": "Initial app greeting"
+  },
+  "login": "Log in",
+  "@login": {
+    "description": "Login button name"
+  },
+  "login_title": "Home, sweet home",
+  "@login_title": {
+    "description": "Login page greeting"
+  },
+  "username": "Username",
+  "@username": {
+    "description": "Username field label"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Password field label"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "Email field label"
+  },
+  "signup": "Sign up",
+  "@signup": {
+    "description": "Signup button name"
+  },
+  "mainInfo": "Main information",
+  "@mainInfo": {
+    "description": "Main information title"
+  },
+  "signup_sortingHatQuestions": "Sorting Hat Questions",
+  "@signup_sortingHatQuestions": {
+    "description": "Sorting Hat Questions signup block title"
+  },
+  "signup_sortingHatQuestions_creature": "What is your creature?",
+  "@signup_sortingHatQuestions_creature": {
+    "description": "Sorting Hat creasture question"
+  },
+  "signup_sortingHatQuestions_bestQuality": "What is your best quality?",
+  "@signup_sortingHatQuestions_bestQuality": {
+    "description": "Sorting Hat best quality question"
+  },
+  "signup_sortingHatQuestions_dream": "What is your dream?",
+  "@signup_sortingHatQuestions_dream": {
+    "description": "Sorting Hat dream question"
+  },
+  "signup_confirm": "Let's go",
+  "@signup_confirm": {
+    "description": "Confirm signup button name"
+  },
+  "notFoundCharacter": "Character is not found",
+  "@notFoundCharacter": {
+    "description": "Message for case when character is not found"
+  },
+  "house": "House: ",
+  "@house": {
+    "description": "House label"
+  },
+  "patronus": "Patronus: ",
+  "@patronus": {
+    "description": "Patronus label"
+  },
+  "wand": "Wand",
+  "@wand": {
+    "description": "Wand label"
+  },
+  "wand_wood": "Wood",
+  "@wand_wood": {
+    "description": "Wand wood label"
+  },
+  "wand_core": "Core",
+  "@wand_core": {
+    "description": "Wand core label"
+  },
+  "wand_length": "Length",
+  "@wand_length": {
+    "description": "Wand length label"
+  },
+  "ancestry": "Ancestry: ",
+  "@ancestry": {
+    "description": "Ancestry label"
+  },
+  "gryffindor": "Gryffindor",
+  "@gryffindor": {
+    "description": "Gryffindor house name"
+  },
+  "slytherin": "Slytherin",
+  "@slytherin": {
+    "description": "Slytherin house name"
+  },
+  "hufflepuff": "Hufflepuff",
+  "@hufflepuff": {
+    "description": "Hufflepuff house name"
+  },
+  "ravenclaw": "Ravenclaw",
+  "@ravenclaw": {
+    "description": "Ravenclaw house name"
+  },
+  "teachers": "Teachers",
+  "@teachers": {
+    "description": "Teachers title"
+  },
+  "classmates": "Classmates",
+  "@classmates": {
+    "description": "Classmates title"
+  },
+  "favouriteSpells": "Favourite spells",
+  "@favouriteSpells": {
+    "description": "Favourite spells title"
+  },
+  "account": "Account",
+  "@account": {
+    "description": "Account title"
+  },
+  "privacyPolicy": "Privacy Policy",
+  "@privacyPolicy": {
+    "description": "Privacy Policy title"
+  },
+  "termsAndConditions": "Terms and Conditions",
+  "@termsAndConditions": {
+    "description": "Terms and Conditions title"
+  },
+  "logout": "Log out",
+  "@logout": {
+    "description": "Log out button name"
+  },
+  "customization": "Customization",
+  "@customization": {
+    "description": "Customization title"
+  },
+  "theme": "Theme",
+  "@theme": {
+    "description": "Theme title"
+  },
+  "theme_light": "Light",
+  "@theme_light": {
+    "description": "Light theme name"
+  },
+  "theme_dark": "Dark",
+  "@theme_dark": {
+    "description": "Dark theme name"
+  },
+  "localization": "Localization",
+  "@localization": {
+    "description": "Localization title"
+  },
+  "localization_en": "English",
+  "@localization_en": {
+    "description": "English language name"
+  },
+  "localization_fr": "French",
+  "@localization_fr": {
+    "description": "French language name"
+  },
+  "charmClassOver": "Charm class is over",
+  "@charmClassOver": {
+    "description": "Charm class is over message"
+  },
+  "repeat": "Repeat",
+  "@repeat": {
+    "description": "Repeat button name"
+  },
+  "navigation_house": "House",
+  "@navigation_house": {
+    "description": "Navigation bar House tab name"
+  },
+  "navigation_spells": "Spells",
+  "@navigation_spells": {
+    "description": "Navigation bar Spells tab name"
+  },
+  "navigation_characters": "Characters",
+  "@navigation_characters": {
+    "description": "Navigation bar Characters tab name"
+  },
+  "navigation_settings": "Settings",
+  "@navigation_settings": {
+    "description": "Navigation bar Settings tab name"
+  }
+}

@@ -1,4 +1,6 @@
 import 'package:daily_hogwarts/core/data/character_model.dart';
+import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
+import 'package:daily_hogwarts/core/utils/extensions/localization_utils_extension.dart';
 import 'package:flutter/material.dart';
 
 class CharacterItem extends StatelessWidget {
@@ -13,6 +15,8 @@ class CharacterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = context.t;
+
     return Card(
       margin: const EdgeInsets.symmetric(
         vertical: 8.0,
@@ -40,7 +44,7 @@ class CharacterItem extends StatelessWidget {
             ),
           ),
           subtitle: Text(
-            character.house,
+            t.getDynamicLocalizedString(character.house.toLowerCase()),
             style: const TextStyle(
               fontSize: 14,
             ),

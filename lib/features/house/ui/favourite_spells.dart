@@ -1,5 +1,6 @@
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
+import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/utils/mock_spells.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,7 @@ class FavouriteSpells extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final orientation = MediaQuery.orientationOf(context);
+    final t = context.t;
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -19,10 +21,10 @@ class FavouriteSpells extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: PrettifiedFieldValue(
-              title: "Favourite spells",
+              title: t.favouriteSpells,
             ),
           ),
           GridView.builder(

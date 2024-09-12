@@ -1,5 +1,6 @@
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_card.dart';
+import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -10,23 +11,25 @@ class Account extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = context.t;
+
     return Consumer<AuthViewModel>(
       builder: (_, authProvider, __) => CustomCard(
-        title: 'Account',
+        title: t.account,
         children: [
           _MenuItem(
-            itemTitle: 'Privacy Policy',
+            itemTitle: t.privacyPolicy,
             onTap: () {},
           ),
           _MenuItem(
-            itemTitle: 'Terms and Conditions',
+            itemTitle: t.termsAndConditions,
             onTap: () {},
           ),
           const Divider(),
           ListTile(
-            title: const Text(
-              'Logout',
-              style: TextStyle(
+            title: Text(
+              t.logout,
+              style: const TextStyle(
                 color: Colors.red,
               ),
             ),

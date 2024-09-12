@@ -1,4 +1,5 @@
 import 'package:daily_hogwarts/core/ui/custom_card.dart';
+import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
 import 'package:flutter/material.dart';
 
 class MainInfo extends StatelessWidget {
@@ -6,9 +7,11 @@ class MainInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomCard(
-      title: 'Main Info',
-      children: [
+    final t = context.t;
+
+    return CustomCard(
+      title: t.mainInfo,
+      children: const [
         ListTile(
           leading: CircleAvatar(
             backgroundColor: Colors.blue,

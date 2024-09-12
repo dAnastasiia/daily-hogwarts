@@ -1,6 +1,8 @@
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/utils/custom_icons.dart';
 import 'package:daily_hogwarts/core/utils/enums/houses.dart';
+import 'package:daily_hogwarts/core/utils/extensions/localization_extension.dart';
+import 'package:daily_hogwarts/core/utils/extensions/localization_utils_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +12,7 @@ class FlexibleAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final orientation = MediaQuery.orientationOf(context);
+    final t = context.t;
 
     return Selector<AuthViewModel, Houses>(
       selector: (_, provider) => provider.house,
@@ -37,7 +40,9 @@ class FlexibleAppBar extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            house.name.toUpperCase(),
+                            t
+                                .getDynamicLocalizedString(house.name)
+                                .toUpperCase(),
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
