@@ -1,5 +1,6 @@
 import 'package:daily_hogwarts/core/utils/custom_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final int selectedIndex;
@@ -23,7 +24,7 @@ class CustomNavigationBar extends StatelessWidget {
           label: 'House',
         ),
         NavigationDestination(
-          icon: Icon(CustomIcons.wand),
+          icon: Icon(FontAwesomeIcons.hatWizard),
           label: 'Spells',
         ),
         NavigationDestination(

@@ -1,6 +1,7 @@
 import 'package:daily_hogwarts/features/spells/data/spell_model.dart';
 import 'package:daily_hogwarts/features/spells/data/spells_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class SpellCard extends StatelessWidget {
@@ -49,9 +50,15 @@ class SpellCard extends StatelessWidget {
                     onPressed: onRemove,
                   ),
                   IconButton(
-                    icon: const Icon(Icons.local_fire_department_rounded),
-                    color: Colors.yellow.shade700,
+                    icon: const Padding(
+                      padding: EdgeInsets.all(8),
+                      child: FaIcon(
+                        FontAwesomeIcons.wandSparkles,
+                        size: 32,
+                      ),
+                    ),
                     iconSize: 48,
+                    color: Colors.yellow.shade700,
                     onPressed: onCast,
                   ),
                 ],
