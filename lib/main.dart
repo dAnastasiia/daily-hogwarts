@@ -42,7 +42,6 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp.router(
       routerConfig: router,
-      title: 'Daily Hogwarts',
       locale: Locale(locale),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: const [
