@@ -19,7 +19,7 @@ class CharacterDetailsPage extends StatelessWidget {
       return value.toString();
     }
 
-    return (value == null || value.isEmpty) ? 'unknown' : value.toString();
+    return (value == null || value.isEmpty) ? '-' : value.toString();
   }
 
   // * Temporary solution before implementing API calls
