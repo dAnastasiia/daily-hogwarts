@@ -24,6 +24,10 @@ class CharacterDetailsPage extends StatelessWidget {
     return (value == null || value.isEmpty) ? '-' : value.toString();
   }
 
+  String _getWandDetail(String label, String value) {
+    return '$label: ${_getValue(value)}';
+  }
+
   // * Temporary solution before implementing API calls
   Character? _getCharacterById(String id) {
     return characters.firstWhere(
@@ -86,14 +90,22 @@ class CharacterDetailsPage extends StatelessWidget {
               title: t.wand,
               entries: [
                 IndentedText(
-                  value: '${t.wand_wood}: ${_getValue(character.wand.wood)}',
+                  value: _getWandDetail(
+                    t.wand_wood,
+                    _getValue(character.wand.wood),
+                  ),
                 ),
                 IndentedText(
-                  value: '${t.wand_core}: ${_getValue(character.wand.core)}',
+                  value: _getWandDetail(
+                    t.wand_core,
+                    _getValue(character.wand.core),
+                  ),
                 ),
                 IndentedText(
-                  value:
-                      '${t.wand_length}: ${_getValue(character.wand.length)}',
+                  value: _getWandDetail(
+                    t.wand_length,
+                    _getValue(character.wand.length),
+                  ),
                 ),
               ],
             ),
