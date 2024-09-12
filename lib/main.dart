@@ -31,8 +31,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeMode themeMode = context.watch<SettingsViewModel>().themeMode;
-    final String locale = context.watch<SettingsViewModel>().locale;
+    final SettingsViewModel settingsViewModel =
+        context.watch<SettingsViewModel>();
+    final ThemeMode themeMode = settingsViewModel.themeMode;
+    final String locale = settingsViewModel.locale;
 
     final AuthViewModel authViewModel = context.watch<AuthViewModel>();
     final Color seedColor = authViewModel.house.color;
