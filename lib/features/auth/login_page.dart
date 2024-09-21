@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                t.login_title,
+                t.loginPageTitle,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 28,

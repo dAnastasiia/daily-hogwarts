@@ -24,19 +24,19 @@ class CustomNavigationBar extends StatelessWidget {
       destinations: <Widget>[
         NavigationDestination(
           icon: const Icon(CustomIcons.blazon),
-          label: t.navigation_house,
+          label: t.houseTab,
         ),
         NavigationDestination(
           icon: const Icon(FontAwesomeIcons.hatWizard),
-          label: t.navigation_spells,
+          label: t.spellsTab,
         ),
         NavigationDestination(
           icon: const Icon(CustomIcons.castle),
-          label: t.navigation_characters,
+          label: t.charactersTab,
         ),
         NavigationDestination(
           icon: const Icon(Icons.settings),
-          label: t.navigation_settings,
+          label: t.settingsTab,
         ),
       ],
     );

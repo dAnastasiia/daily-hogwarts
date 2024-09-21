@@ -55,7 +55,7 @@ class SignupPage extends StatelessWidget {
               ),
               const SizedBox(height: 60),
               Text(
-                t.signup_sortingHatQuestions,
+                t.sortingHatQuestions,
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -65,20 +65,20 @@ class SignupPage extends StatelessWidget {
               ...getPrettifiedWidgetsList(
                 entries: [
                   CustomTextField(
-                    label: t.signup_sortingHatQuestions_creature,
+                    label: t.creatureQuestion,
                   ),
                   CustomTextField(
-                    label: t.signup_sortingHatQuestions_bestQuality,
+                    label: t.bestQualityQuestion,
                   ),
                   CustomTextField(
-                    label: t.signup_sortingHatQuestions_dream,
+                    label: t.dreamQuestion,
                   ),
                 ],
                 spacing: 20,
               ),
               const SizedBox(height: 60),
               CustomFilledButton(
-                title: t.signup_confirm,
+                title: t.letsGo,
                 onPressed: () {
                   // * Success signup imitation
                   authProvider.signup();

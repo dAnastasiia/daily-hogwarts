@@ -16,8 +16,8 @@ class Customization extends StatelessWidget {
     final t = context.t;
 
     Map<String, String> languages = {
-      Languages.english.name: t.localization_en,
-      Languages.french.name: t.localization_fr,
+      Languages.english.name: t.english,
+      Languages.french.name: t.french,
     };
 
     return CustomCard(
@@ -27,15 +27,15 @@ class Customization extends StatelessWidget {
           title: Text(t.theme),
           trailing: CustomDropdown(
             value: settingsViewMode.themeMode == ThemeMode.light
-                ? t.theme_light
-                : t.theme_dark,
+                ? t.lightTheme
+                : t.darkTheme,
             items: [
-              t.theme_light,
-              t.theme_dark,
+              t.lightTheme,
+              t.darkTheme,
             ],
             onChanged: (newValue) {
               final newTheme =
-                  newValue == t.theme_light ? ThemeMode.light : ThemeMode.dark;
+                  newValue == t.lightTheme ? ThemeMode.light : ThemeMode.dark;
               settingsViewMode.setThemeMode(newTheme);
             },
           ),

@@ -91,19 +91,19 @@ class CharacterDetailsPage extends StatelessWidget {
               entries: [
                 IndentedText(
                   value: _getWandDetail(
-                    t.wand_wood,
+                    t.wood,
                     _getValue(character.wand.wood),
                   ),
                 ),
                 IndentedText(
                   value: _getWandDetail(
-                    t.wand_core,
+                    t.core,
                     _getValue(character.wand.core),
                   ),
                 ),
                 IndentedText(
                   value: _getWandDetail(
-                    t.wand_length,
+                    t.length,
                     _getValue(character.wand.length),
                   ),
                 ),

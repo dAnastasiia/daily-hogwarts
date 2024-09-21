@@ -8,8 +8,8 @@
   "@login": {
     "description": "Login button name"
   },
-  "login_title": "Home, sweet home",
-  "@login_title": {
+  "loginPageTitle": "Home, sweet home",
+  "@loginPageTitle": {
     "description": "Login page greeting"
   },
   "username": "Username",
@@ -32,24 +32,24 @@
   "@mainInfo": {
     "description": "Main information title"
   },
-  "signup_sortingHatQuestions": "Sorting Hat Questions",
-  "@signup_sortingHatQuestions": {
+  "sortingHatQuestions": "Sorting Hat Questions",
+  "@sortingHatQuestions": {
     "description": "Sorting Hat Questions signup block title"
   },
-  "signup_sortingHatQuestions_creature": "What is your creature?",
-  "@signup_sortingHatQuestions_creature": {
+  "creatureQuestion": "What is your creature?",
+  "@creatureQuestion": {
     "description": "Sorting Hat creasture question"
   },
-  "signup_sortingHatQuestions_bestQuality": "What is your best quality?",
-  "@signup_sortingHatQuestions_bestQuality": {
+  "bestQualityQuestion": "What is your best quality?",
+  "@bestQualityQuestion": {
     "description": "Sorting Hat best quality question"
   },
-  "signup_sortingHatQuestions_dream": "What is your dream?",
-  "@signup_sortingHatQuestions_dream": {
+  "dreamQuestion": "What is your dream?",
+  "@dreamQuestion": {
     "description": "Sorting Hat dream question"
   },
-  "signup_confirm": "Let's go",
-  "@signup_confirm": {
+  "letsGo": "Let's go",
+  "@letsGo": {
     "description": "Confirm signup button name"
   },
   "notFoundCharacter": "Character is not found",
@@ -68,16 +68,16 @@
   "@wand": {
     "description": "Wand label"
   },
-  "wand_wood": "Wood",
-  "@wand_wood": {
+  "wood": "Wood",
+  "@wood": {
     "description": "Wand wood label"
   },
-  "wand_core": "Core",
-  "@wand_core": {
+  "core": "Core",
+  "@core": {
     "description": "Wand core label"
   },
-  "wand_length": "Length",
-  "@wand_length": {
+  "length": "Length",
+  "@length": {
     "description": "Wand length label"
   },
   "ancestry": "Ancestry: ",
@@ -136,24 +136,24 @@
   "@theme": {
     "description": "Theme title"
   },
-  "theme_light": "Light",
-  "@theme_light": {
+  "lightTheme": "Light",
+  "@lightTheme": {
     "description": "Light theme name"
   },
-  "theme_dark": "Dark",
-  "@theme_dark": {
+  "darkTheme": "Dark",
+  "@darkTheme": {
     "description": "Dark theme name"
   },
   "localization": "Localization",
   "@localization": {
     "description": "Localization title"
   },
-  "localization_en": "English",
-  "@localization_en": {
+  "english": "English",
+  "@english": {
     "description": "English language name"
   },
-  "localization_fr": "French",
-  "@localization_fr": {
+  "french": "French",
+  "@french": {
     "description": "French language name"
   },
   "charmClassOver": "Charm class is over",
@@ -164,20 +164,20 @@
   "@repeat": {
     "description": "Repeat button name"
   },
-  "navigation_house": "House",
-  "@navigation_house": {
+  "houseTab": "House",
+  "@houseTab": {
     "description": "Navigation bar House tab name"
   },
-  "navigation_spells": "Spells",
-  "@navigation_spells": {
+  "spellsTab": "Spells",
+  "@spellsTab": {
     "description": "Navigation bar Spells tab name"
   },
-  "navigation_characters": "Characters",
-  "@navigation_characters": {
+  "charactersTab": "Characters",
+  "@charactersTab": {
     "description": "Navigation bar Characters tab name"
   },
-  "navigation_settings": "Settings",
-  "@navigation_settings": {
+  "settingsTab": "Settings",
+  "@settingsTab": {
     "description": "Navigation bar Settings tab name"
   }
 }
