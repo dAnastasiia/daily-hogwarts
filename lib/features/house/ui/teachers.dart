@@ -1,3 +1,4 @@
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
 import 'package:daily_hogwarts/core/utils/mock_characters.dart';
 import 'package:daily_hogwarts/core/utils/routes.dart';
@@ -9,18 +10,20 @@ class Teachers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = context.t;
+
     return SliverToBoxAdapter(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(
+          Padding(
+            padding: const EdgeInsets.only(
               top: 48.0,
               right: 16.0,
               bottom: 16.0,
               left: 16.0,
             ),
-            child: PrettifiedFieldValue(title: 'Teachers'),
+            child: PrettifiedFieldValue(title: t.teachers),
           ),
           SizedBox(
             height: 160.0,

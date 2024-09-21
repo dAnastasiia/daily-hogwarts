@@ -1,6 +1,8 @@
-import 'package:daily_hogwarts/core/model/theme_view_model.dart';
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
+import 'package:daily_hogwarts/core/model/settings_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_card.dart';
 import 'package:daily_hogwarts/core/ui/custom_dropdown.dart';
+import 'package:daily_hogwarts/core/utils/enums/languages.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,30 +11,44 @@ class Customization extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeViewModel themeViewMode = context.watch<ThemeViewModel>();
+    final SettingsViewModel settingsViewMode =
+        context.watch<SettingsViewModel>();
+    final t = context.t;
+
+    Map<String, String> languages = {
+      Languages.english.name: t.english,
+      Languages.french.name: t.french,
+    };
 
     return CustomCard(
-      title: 'Customization',
+      title: t.customization,
       children: [
         ListTile(
-          title: const Text('Theme'),
+          title: Text(t.theme),
           trailing: CustomDropdown(
-            value:
-                themeViewMode.themeMode == ThemeMode.light ? "Light" : "Dark",
-            items: const ['Light', 'Dark'],
+            value: settingsViewMode.themeMode == ThemeMode.light
+                ? t.lightTheme
+                : t.darkTheme,
+            items: [
+              t.lightTheme,
+              t.darkTheme,
+            ],
             onChanged: (newValue) {
               final newTheme =
-                  newValue == "Light" ? ThemeMode.light : ThemeMode.dark;
-              themeViewMode.setThemeMode(newTheme);
+                  newValue == t.lightTheme ? ThemeMode.light : ThemeMode.dark;
+              settingsViewMode.setThemeMode(newTheme);
             },
           ),
         ),
         ListTile(
-          title: const Text('Localization'),
+          title: Text(t.localization),
           trailing: CustomDropdown(
-            value: 'English',
-            items: const ['English', 'French'],
-            onChanged: (newValue) {},
+            value: settingsViewMode.locale,
+            items: languages.keys.toList(),
+            itemsMap: languages,
+            onChanged: (newValue) {
+              settingsViewMode.setLocale(newValue);
+            },
           ),
         ),
       ],

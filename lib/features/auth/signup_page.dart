@@ -1,3 +1,4 @@
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_filled_button.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_field.dart';
@@ -12,6 +13,8 @@ class SignupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = context.t;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -28,9 +31,9 @@ class SignupPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
-                'Main information',
-                style: TextStyle(
+              Text(
+                t.mainInfo,
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -38,22 +41,22 @@ class SignupPage extends StatelessWidget {
               const SizedBox(height: 12),
               ...getPrettifiedWidgetsList(
                 entries: [
-                  const CustomTextField(
-                    label: 'Username',
+                  CustomTextField(
+                    label: t.username,
                   ),
-                  const CustomTextField(
-                    label: 'Email',
+                  CustomTextField(
+                    label: t.email,
                   ),
-                  const CustomTextField(
-                    label: 'Password',
+                  CustomTextField(
+                    label: t.password,
                   ),
                 ],
                 spacing: 20,
               ),
               const SizedBox(height: 60),
-              const Text(
-                'Sorting Hat Questions',
-                style: TextStyle(
+              Text(
+                t.sortingHatQuestions,
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
@@ -61,21 +64,21 @@ class SignupPage extends StatelessWidget {
               const SizedBox(height: 12),
               ...getPrettifiedWidgetsList(
                 entries: [
-                  const CustomTextField(
-                    label: 'What is your creature?',
+                  CustomTextField(
+                    label: t.creatureQuestion,
                   ),
-                  const CustomTextField(
-                    label: 'What is your best quality?',
+                  CustomTextField(
+                    label: t.bestQualityQuestion,
                   ),
-                  const CustomTextField(
-                    label: 'What is your dream?',
+                  CustomTextField(
+                    label: t.dreamQuestion,
                   ),
                 ],
                 spacing: 20,
               ),
               const SizedBox(height: 60),
               CustomFilledButton(
-                title: 'Let\'s go',
+                title: t.letsGo,
                 onPressed: () {
                   // * Success signup imitation
                   authProvider.signup();

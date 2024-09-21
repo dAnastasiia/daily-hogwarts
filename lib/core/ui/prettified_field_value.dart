@@ -1,4 +1,4 @@
-import 'package:daily_hogwarts/core/model/theme_view_model.dart';
+import 'package:daily_hogwarts/core/model/settings_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +14,7 @@ class PrettifiedFieldValue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeMode themeMode = context.watch<ThemeViewModel>().themeMode;
+    final ThemeMode themeMode = context.watch<SettingsViewModel>().themeMode;
 
     return RichText(
       text: TextSpan(

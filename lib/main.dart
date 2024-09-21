@@ -1,8 +1,9 @@
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
-import 'package:daily_hogwarts/core/model/theme_view_model.dart';
+import 'package:daily_hogwarts/core/model/settings_view_model.dart';
 import 'package:daily_hogwarts/core/router.dart';
 import 'package:daily_hogwarts/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -14,7 +15,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ThemeViewModel(),
+          create: (_) => SettingsViewModel(),
         ),
         ChangeNotifierProvider(
           create: (_) => AuthViewModel(),
@@ -30,15 +31,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeMode themeMode = context.watch<ThemeViewModel>().themeMode;
-    final AuthViewModel authViewModel = context.watch<AuthViewModel>();
+    final SettingsViewModel settingsViewModel =
+        context.watch<SettingsViewModel>();
+    final ThemeMode themeMode = settingsViewModel.themeMode;
+    final String locale = settingsViewModel.locale;
 
+    final AuthViewModel authViewModel = context.watch<AuthViewModel>();
     final Color seedColor = authViewModel.house.color;
     final bool isAuthenticated = authViewModel.isAuthenticated;
 
     return MaterialApp.router(
       routerConfig: router,
-      title: 'Daily Hogwarts',
+      locale: Locale(locale),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: const [
+        Locale('en'),
+        Locale('fr'),
+      ],
       themeMode: themeMode,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(

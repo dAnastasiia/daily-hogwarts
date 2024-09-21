@@ -1,4 +1,6 @@
 import 'package:daily_hogwarts/core/data/character_model.dart';
+import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
+import 'package:daily_hogwarts/core/extensions/localization_utils_extension.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_list.dart';
 import 'package:daily_hogwarts/core/ui/indented_text.dart';
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
@@ -22,6 +24,10 @@ class CharacterDetailsPage extends StatelessWidget {
     return (value == null || value.isEmpty) ? '-' : value.toString();
   }
 
+  String _getWandDetail(String label, String value) {
+    return '$label: ${_getValue(value)}';
+  }
+
   // * Temporary solution before implementing API calls
   Character? _getCharacterById(String id) {
     return characters.firstWhere(
@@ -31,6 +37,7 @@ class CharacterDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = context.t;
     final character = _getCharacterById(id);
 
     if (character == null) {
@@ -41,8 +48,8 @@ class CharacterDetailsPage extends StatelessWidget {
             onPressed: context.pop,
           ),
         ),
-        body: const Center(
-          child: Text('Character with is not found'),
+        body: Center(
+          child: Text(t.notFoundCharacter),
         ),
       );
     }
@@ -70,32 +77,41 @@ class CharacterDetailsPage extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             PrettifiedFieldValue(
-              title: "House: ",
-              value: character.house,
+              title: t.house,
+              value: t.getDynamicLocalizedString(character.house.toLowerCase()),
             ),
             const SizedBox(height: 8),
             PrettifiedFieldValue(
-              title: "Patronus: ",
+              title: t.patronus,
               value: _getValue(character.patronus),
             ),
             const SizedBox(height: 24),
             CustomTextList(
-              title: "Wand",
+              title: t.wand,
               entries: [
                 IndentedText(
-                  value: 'Wood: ${_getValue(character.wand.wood)}',
+                  value: _getWandDetail(
+                    t.wood,
+                    _getValue(character.wand.wood),
+                  ),
                 ),
                 IndentedText(
-                  value: 'Core: ${_getValue(character.wand.core)}',
+                  value: _getWandDetail(
+                    t.core,
+                    _getValue(character.wand.core),
+                  ),
                 ),
                 IndentedText(
-                  value: 'Length: ${_getValue(character.wand.length)}',
+                  value: _getWandDetail(
+                    t.length,
+                    _getValue(character.wand.length),
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 24),
             PrettifiedFieldValue(
-              title: "Ancestry: ",
+              title: t.ancestry,
               value: _getValue(character.ancestry),
             ),
           ],
