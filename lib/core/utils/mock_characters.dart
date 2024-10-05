@@ -2,7 +2,7 @@ import 'package:daily_hogwarts/core/data/character_model.dart';
 
 final List<Character> characters = [
   Character(
-    id: "4c7e6819-a91a-45b2-a454-f931e4a7cce4",
+    id: "9e3f7ce4-b9a7-4244-b709-dae5c1f1d4a8",
     name: "Harry Potter",
     alternateNames: ["The Boy Who Lived", "The Chosen One"],
     species: "human",
@@ -54,7 +54,7 @@ final List<Character> characters = [
     image: "https://ik.imagekit.io/hpapi/hermione.jpeg",
   ),
   Character(
-    id: "4c7e6819-a91a-45b2-a454-f931e4a7cce5",
+    id: "c3b1f9a5-b87b-48bf-b00d-95b093ea6390",
     name: "Ron Weasley",
     alternateNames: ["Ronnie", "Won-Won"],
     species: "human",
@@ -103,7 +103,7 @@ final List<Character> characters = [
         "https://static.wikia.nocookie.net/characters/images/8/88/Dumbledore.jpg/revision/latest?cb=20240824182238",
   ),
   Character(
-    id: "67890",
+    id: "3569d265-bd27-44d8-88e8-82fb0a848374",
     name: "Severus Snape",
     alternateNames: ["The Half-Blood Prince", "Snape"],
     species: "human",
@@ -129,7 +129,7 @@ final List<Character> characters = [
     image: "https://ik.imagekit.io/hpapi/snape.jpg",
   ),
   Character(
-    id: "9e28d47b-9877-4b78-a82b-6a4ec9c8f88b",
+    id: "ca3827f0-375a-4891-aaa5-f5e8a5bad225",
     name: "Minerva McGonagall",
     alternateNames: ["Professor McGonagall"],
     species: "human",
@@ -155,7 +155,7 @@ final List<Character> characters = [
     image: "https://ik.imagekit.io/hpapi/mcgonagall.jpg",
   ),
   Character(
-    id: "b7d1b8e2-5486-4d12-b2ed-4b4cde4ed11f",
+    id: "36bfefd0-e0bb-4d11-be98-d1ef6117a77a",
     name: "Rubeus Hagrid",
     alternateNames: ["Hagrid"],
     species: "half-giant",
@@ -181,7 +181,7 @@ final List<Character> characters = [
     image: "https://ik.imagekit.io/hpapi/hagrid.png",
   ),
   Character(
-    id: "d8e1d8c9-e5f3-4db0-b687-54d7286b1fdc",
+    id: "2cfd2d4b-5d1e-4dc5-8837-37a97c7e2f2f",
     name: "Sirius Black",
     alternateNames: ["Padfoot", "Sirius"],
     species: "human",
@@ -207,7 +207,7 @@ final List<Character> characters = [
     image: "https://ik.imagekit.io/hpapi/sirius.JPG",
   ),
   Character(
-    id: "3c82fa6e-6f8a-497f-a674-52d8e8a0d63f",
+    id: "b8f9095b-9de6-4d7d-83e0-4391af8f22e4",
     name: "Remus Lupin",
     alternateNames: ["Moony", "Lupin"],
     species: "human",
@@ -233,7 +233,7 @@ final List<Character> characters = [
     image: "https://ik.imagekit.io/hpapi/lupin.jpg",
   ),
   Character(
-    id: "fe2d1f1d-4e29-4cfc-87c3-96f9bfc55e3f",
+    id: "861c4cde-2f0f-4796-8d8f-9492e74b2573",
     name: "Luna Lovegood",
     alternateNames: ["Loony Lovegood"],
     species: "human",
@@ -259,7 +259,7 @@ final List<Character> characters = [
     image: "https://ik.imagekit.io/hpapi/luna.jpg",
   ),
   Character(
-    id: "ad92f9d6-2c59-4f7f-a3e1-4c86345dc89a",
+    id: "af95bd8a-dfae-45bb-bc69-533860d34129",
     name: "Draco Malfoy",
     alternateNames: ["Draco"],
     species: "human",
@@ -285,7 +285,7 @@ final List<Character> characters = [
     image: "https://ik.imagekit.io/hpapi/draco.jpg",
   ),
   Character(
-    id: "cf89305d-5e4a-4f2e-849e-c08b8968b23d",
+    id: "3db6dc51-b461-4fa4-a6e4-b1ff352221c5",
     name: "Neville Longbottom",
     alternateNames: ["Neville"],
     species: "human",
@@ -311,7 +311,7 @@ final List<Character> characters = [
     image: "https://ik.imagekit.io/hpapi/neville.jpg",
   ),
   Character(
-    id: "f84d28c4-bd65-4b6b-81eb-d2c6651ac5c2",
+    id: "1cd6dc64-01a9-4379-9cfd-1a7167ba1bb1",
     name: "Ginny Weasley",
     alternateNames: ["Ginny"],
     species: "human",
