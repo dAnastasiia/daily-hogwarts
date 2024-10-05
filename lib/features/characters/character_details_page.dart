@@ -3,6 +3,7 @@ import 'package:daily_hogwarts/core/extensions/localization_utils_extension.dart
 import 'package:daily_hogwarts/core/ui/custom_message.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_list.dart';
 import 'package:daily_hogwarts/core/ui/indented_text.dart';
+import 'package:daily_hogwarts/core/ui/loading_indicator.dart';
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
 import 'package:daily_hogwarts/features/characters/bloc/character/character_bloc.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +17,6 @@ class CharacterDetailsPage extends StatelessWidget {
     super.key,
     required this.id,
   });
-
-  void _fetchCharacter(BuildContext context) {
-    context.read<CharacterBloc>().add(FetchCharacter(id));
-  }
 
   String _getValue(dynamic value) {
     if (value is int || value is double) {
@@ -58,84 +55,82 @@ class CharacterDetailsPage extends StatelessWidget {
               ),
             ),
             body: (() {
-              if (state is CharacterLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state is CharacterSuccess) {
-                final character = state.character;
+              switch (state) {
+                case CharacterLoading _:
+                  return const LoadingIndicator();
+                case CharacterSuccess _:
+                  final character = state.character;
 
-                return Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: CircleAvatar(
-                          backgroundImage: character.image.isNotEmpty
-                              ? NetworkImage(character.image)
-                              : const AssetImage(
-                                  'assets/images/default-avatar.jpg',
-                                ),
-                          radius: 75,
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: CircleAvatar(
+                            backgroundImage: character.image.isNotEmpty
+                                ? NetworkImage(character.image)
+                                : const AssetImage(
+                                    'assets/images/default-avatar.jpg',
+                                  ),
+                            radius: 75,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 32),
-                      PrettifiedFieldValue(
-                        title: t.house,
-                        value: t.getDynamicLocalizedString(
-                          character.house.toLowerCase(),
+                        const SizedBox(height: 32),
+                        PrettifiedFieldValue(
+                          title: t.house,
+                          value: t.getDynamicLocalizedString(
+                            character.house.toLowerCase(),
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 8),
-                      PrettifiedFieldValue(
-                        title: t.patronus,
-                        value: _getValue(character.patronus),
-                      ),
-                      const SizedBox(height: 24),
-                      CustomTextList(
-                        title: t.wand,
-                        entries: [
-                          IndentedText(
-                            value: _getWandDetail(
-                              t.wood,
-                              _getValue(character.wand.wood),
+                        const SizedBox(height: 8),
+                        PrettifiedFieldValue(
+                          title: t.patronus,
+                          value: _getValue(character.patronus),
+                        ),
+                        const SizedBox(height: 24),
+                        CustomTextList(
+                          title: t.wand,
+                          entries: [
+                            IndentedText(
+                              value: _getWandDetail(
+                                t.wood,
+                                _getValue(character.wand.wood),
+                              ),
                             ),
-                          ),
-                          IndentedText(
-                            value: _getWandDetail(
-                              t.core,
-                              _getValue(character.wand.core),
+                            IndentedText(
+                              value: _getWandDetail(
+                                t.core,
+                                _getValue(character.wand.core),
+                              ),
                             ),
-                          ),
-                          IndentedText(
-                            value: _getWandDetail(
-                              t.length,
-                              _getValue(character.wand.length),
+                            IndentedText(
+                              value: _getWandDetail(
+                                t.length,
+                                _getValue(character.wand.length),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 24),
-                      PrettifiedFieldValue(
-                        title: t.ancestry,
-                        value: _getValue(character.ancestry),
-                      ),
-                    ],
-                  ),
-                );
-              } else if (state is CharacterError) {
-                return CustomMessage(
-                  message: t.getDynamicLocalizedString(state.error),
-                  buttonText: t.repeat,
-                  onPressed: () => _fetchCharacter(context),
-                );
-              } else {
-                return CustomMessage(
-                  message: t.noData,
-                  buttonText: t.repeat,
-                  onPressed: () => _fetchCharacter(context),
-                );
+                          ],
+                        ),
+                        const SizedBox(height: 24),
+                        PrettifiedFieldValue(
+                          title: t.ancestry,
+                          value: _getValue(character.ancestry),
+                        ),
+                      ],
+                    ),
+                  );
+                case CharacterError _:
+                  return CustomMessage(
+                    message: t.getDynamicLocalizedString(state.error),
+                    buttonText: t.repeat,
+                    onPressed: () =>
+                        context.read<CharacterBloc>().add(FetchCharacter(id)),
+                  );
+                default:
+                  return CustomMessage(
+                    message: t.noData,
+                  );
               }
             }()),
           );
