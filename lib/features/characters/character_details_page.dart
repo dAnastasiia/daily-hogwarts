@@ -69,9 +69,11 @@ class CharacterDetailsPage extends StatelessWidget {
           children: [
             Center(
               child: CircleAvatar(
-                backgroundImage: NetworkImage(
-                  character.image,
-                ),
+                backgroundImage: character.image.isNotEmpty
+                    ? NetworkImage(character.image)
+                    : const AssetImage(
+                        'assets/images/default-avatar.jpg',
+                      ),
                 radius: 75,
               ),
             ),
