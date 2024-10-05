@@ -44,5 +44,8 @@
   "houseTab": "Maison",
   "spellsTab": "Sorts",
   "charactersTab": "Personnages",
-  "settingsTab": "Paramètres"
+  "settingsTab": "Paramètres",
+  "error": "Erreur : {error}",
+  "characterDetails": "Détails du personnage",
+  "noData": "Pas de données"
 }

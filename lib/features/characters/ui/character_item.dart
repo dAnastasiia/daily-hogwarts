@@ -32,9 +32,11 @@ class CharacterItem extends StatelessWidget {
         ),
         child: ListTile(
           leading: CircleAvatar(
-            backgroundImage: NetworkImage(
-              character.image,
-            ),
+            backgroundImage: character.image.isNotEmpty
+                ? NetworkImage(character.image)
+                : const AssetImage(
+                    'assets/images/default-avatar.jpg',
+                  ),
           ),
           title: Text(
             character.name,

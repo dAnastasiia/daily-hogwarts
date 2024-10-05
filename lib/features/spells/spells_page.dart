@@ -1,4 +1,5 @@
 import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
+import 'package:daily_hogwarts/core/ui/custom_message.dart';
 import 'package:daily_hogwarts/features/spells/data/spells_view_model.dart';
 import 'package:daily_hogwarts/features/spells/ui/spells_swiper.dart';
 import 'package:flutter/material.dart';
@@ -18,21 +19,10 @@ class SpellsPage extends StatelessWidget {
         final spells = spellsProvider.spells;
 
         if (spells.isEmpty) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  t.charmClassOver,
-                  style: const TextStyle(fontSize: 18),
-                ),
-                const SizedBox(height: 16),
-                FilledButton(
-                  onPressed: spellsProvider.fetchSpells,
-                  child: Text(t.repeat),
-                ),
-              ],
-            ),
+          return CustomMessage(
+            message: t.charmClassOver,
+            buttonText: t.repeat,
+            onPressed: spellsProvider.fetchSpells,
           );
         }
 
