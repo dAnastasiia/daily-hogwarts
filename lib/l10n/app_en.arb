@@ -38,7 +38,7 @@
   },
   "creatureQuestion": "What is your creature?",
   "@creatureQuestion": {
-    "description": "Sorting Hat creasture question"
+    "description": "Sorting Hat creature question"
   },
   "bestQualityQuestion": "What is your best quality?",
   "@bestQualityQuestion": {
@@ -179,5 +179,23 @@
   "settingsTab": "Settings",
   "@settingsTab": {
     "description": "Navigation bar Settings tab name"
+  },
+  "error": "Error: {error}",
+  "@error": {
+    "description": "Error message",
+    "placeholders": {
+      "error": {
+        "type": "String",
+        "example": "404 Not Found"
+      }
+    }
+  },
+  "characterDetails": "Character details",
+  "@characterDetails": {
+    "description": "Character details screen default title"
+  },
+  "noData": "No data available",
+  "@noData": {
+    "description": "Message for case when no data is available"
   }
 }

@@ -73,7 +73,7 @@ class Character {
 class Wand {
   final String wood;
   final String core;
-  final double? length;
+  final num? length;
 
   Wand({
     required this.wood,
