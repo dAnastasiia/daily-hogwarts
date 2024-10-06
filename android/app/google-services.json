@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "228274356854",
+    "project_id": "daily-hogwarts-7c419",
+    "storage_bucket": "daily-hogwarts-7c419.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228274356854:android:e1423ee6297c22691f5557",
+        "android_client_info": {
+          "package_name": "com.example.daily_hogwarts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4BvYuoudFtLsFzWbHk2nieZlFauqMdqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
