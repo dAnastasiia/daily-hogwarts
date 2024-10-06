@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class CustomMessage extends StatelessWidget {
   final String message;
-  final String buttonText;
-  final VoidCallback onPressed;
+  final String? buttonText;
+  final VoidCallback? onPressed;
 
   const CustomMessage({
     super.key,
     required this.message,
-    required this.buttonText,
-    required this.onPressed,
+    this.buttonText,
+    this.onPressed,
   });
 
   @override
@@ -22,11 +22,13 @@ class CustomMessage extends StatelessWidget {
             message,
             style: const TextStyle(fontSize: 18),
           ),
-          const SizedBox(height: 16),
-          FilledButton(
-            onPressed: onPressed,
-            child: Text(buttonText),
-          ),
+          if (onPressed != null && buttonText != null) ...[
+            const SizedBox(height: 16),
+            FilledButton(
+              onPressed: onPressed,
+              child: Text(buttonText!),
+            ),
+          ],
         ],
       ),
     );
