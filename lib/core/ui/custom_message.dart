@@ -27,7 +27,7 @@ class CustomMessage extends StatelessWidget {
             FilledButton(
               onPressed: onPressed,
               child: Text(buttonText!),
-            )
+            ),
           ],
         ],
       ),

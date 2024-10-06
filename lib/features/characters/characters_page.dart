@@ -1,3 +1,4 @@
+import 'package:daily_hogwarts/core/data/character_model.dart';
 import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/extensions/localization_utils_extension.dart';
 import 'package:daily_hogwarts/core/ui/custom_message.dart';
@@ -20,40 +21,36 @@ class CharactersPage extends StatelessWidget {
       create: (_) => CharactersBloc()..add(FetchCharacters()),
       child: BlocBuilder<CharactersBloc, CharactersState>(
         builder: (_, state) {
-          switch (state) {
-            case CharactersLoading _:
-              return const LoadingIndicator();
-            case CharactersSuccess _:
-              final characters = state.characters;
-
-              return ListView.builder(
-                itemCount: characters.length,
-                itemBuilder: (state, index) {
-                  final character = characters[index];
-
-                  return CharacterItem(
-                    character: character,
-                    onTap: () => context.pushNamed(
-                      Routes.characterDetails.name,
-                      pathParameters: {'id': character.id},
-                    ),
-                  );
-                },
-              );
-            case CharactersError _:
-              return CustomMessage(
+          return switch (state) {
+            CharactersLoading() => const LoadingIndicator(),
+            CharactersSuccess() =>
+              _buildCharacterList(state.characters, context),
+            CharactersError() => CustomMessage(
                 message: t.getDynamicLocalizedString(state.error),
                 buttonText: t.repeat,
                 onPressed: () =>
                     context.read<CharactersBloc>().add(FetchCharacters()),
-              );
-            default:
-              return CustomMessage(
-                message: t.noData,
-              );
-          }
+              ),
+          };
         },
       ),
+    );
+  }
+
+  Widget _buildCharacterList(List<Character> characters, BuildContext context) {
+    return ListView.builder(
+      itemCount: characters.length,
+      itemBuilder: (_, index) {
+        final character = characters[index];
+
+        return CharacterItem(
+          character: character,
+          onTap: () => context.pushNamed(
+            Routes.characterDetails.name,
+            pathParameters: {'id': character.id},
+          ),
+        );
+      },
     );
   }
 }

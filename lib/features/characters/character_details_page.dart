@@ -1,3 +1,4 @@
+import 'package:daily_hogwarts/core/data/character_model.dart';
 import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/extensions/localization_utils_extension.dart';
 import 'package:daily_hogwarts/core/ui/custom_message.dart';
@@ -55,86 +56,84 @@ class CharacterDetailsPage extends StatelessWidget {
               ),
             ),
             body: (() {
-              switch (state) {
-                case CharacterLoading _:
-                  return const LoadingIndicator();
-                case CharacterSuccess _:
-                  final character = state.character;
-
-                  return Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
-                          child: CircleAvatar(
-                            backgroundImage: character.image.isNotEmpty
-                                ? NetworkImage(character.image)
-                                : const AssetImage(
-                                    'assets/images/default-avatar.jpg',
-                                  ),
-                            radius: 75,
-                          ),
-                        ),
-                        const SizedBox(height: 32),
-                        PrettifiedFieldValue(
-                          title: t.house,
-                          value: t.getDynamicLocalizedString(
-                            character.house.toLowerCase(),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        PrettifiedFieldValue(
-                          title: t.patronus,
-                          value: _getValue(character.patronus),
-                        ),
-                        const SizedBox(height: 24),
-                        CustomTextList(
-                          title: t.wand,
-                          entries: [
-                            IndentedText(
-                              value: _getWandDetail(
-                                t.wood,
-                                _getValue(character.wand.wood),
-                              ),
-                            ),
-                            IndentedText(
-                              value: _getWandDetail(
-                                t.core,
-                                _getValue(character.wand.core),
-                              ),
-                            ),
-                            IndentedText(
-                              value: _getWandDetail(
-                                t.length,
-                                _getValue(character.wand.length),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 24),
-                        PrettifiedFieldValue(
-                          title: t.ancestry,
-                          value: _getValue(character.ancestry),
-                        ),
-                      ],
-                    ),
-                  );
-                case CharacterError _:
-                  return CustomMessage(
+              return switch (state) {
+                CharacterLoading() => const LoadingIndicator(),
+                CharacterSuccess() =>
+                  _buildCharacterProfile(state.character, context),
+                CharacterError() => CustomMessage(
                     message: t.getDynamicLocalizedString(state.error),
                     buttonText: t.repeat,
                     onPressed: () =>
                         context.read<CharacterBloc>().add(FetchCharacter(id)),
-                  );
-                default:
-                  return CustomMessage(
-                    message: t.noData,
-                  );
-              }
+                  ),
+              };
             }()),
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildCharacterProfile(Character character, BuildContext context) {
+    final t = context.t;
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: CircleAvatar(
+              backgroundImage: character.image.isNotEmpty
+                  ? NetworkImage(character.image)
+                  : const AssetImage(
+                      'assets/images/default-avatar.jpg',
+                    ),
+              radius: 75,
+            ),
+          ),
+          const SizedBox(height: 32),
+          PrettifiedFieldValue(
+            title: t.house,
+            value: t.getDynamicLocalizedString(
+              character.house.toLowerCase(),
+            ),
+          ),
+          const SizedBox(height: 8),
+          PrettifiedFieldValue(
+            title: t.patronus,
+            value: _getValue(character.patronus),
+          ),
+          const SizedBox(height: 24),
+          CustomTextList(
+            title: t.wand,
+            entries: [
+              IndentedText(
+                value: _getWandDetail(
+                  t.wood,
+                  _getValue(character.wand.wood),
+                ),
+              ),
+              IndentedText(
+                value: _getWandDetail(
+                  t.core,
+                  _getValue(character.wand.core),
+                ),
+              ),
+              IndentedText(
+                value: _getWandDetail(
+                  t.length,
+                  _getValue(character.wand.length),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          PrettifiedFieldValue(
+            title: t.ancestry,
+            value: _getValue(character.ancestry),
+          ),
+        ],
       ),
     );
   }
