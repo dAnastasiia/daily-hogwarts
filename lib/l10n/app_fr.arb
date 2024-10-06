@@ -47,5 +47,9 @@
   "settingsTab": "Paramètres",
   "error": "Erreur : {error}",
   "characterDetails": "Détails du personnage",
-  "noData": "Pas de données"
+  "noData": "Pas de données",
+  "required": "Requis",
+  "invalidEmail": "Email invalide",
+  "invalidPassword": "Mot de passe invalide",
+  "invalidName": "Nom invalide"
 }
