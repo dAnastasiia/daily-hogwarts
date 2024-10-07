@@ -24,7 +24,7 @@ class CharactersPage extends StatelessWidget {
           return switch (state) {
             CharactersLoading() => const LoadingIndicator(),
             CharactersSuccess() =>
-              _buildCharacterList(state.characters, context),
+              _CharactersList(characters: state.characters),
             CharactersError() => CustomMessage(
                 message: t.getDynamicLocalizedString(state.error),
                 buttonText: t.repeat,
@@ -36,8 +36,17 @@ class CharactersPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildCharacterList(List<Character> characters, BuildContext context) {
+class _CharactersList extends StatelessWidget {
+  final List<Character> characters;
+
+  const _CharactersList({
+    required this.characters,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: characters.length,
       itemBuilder: (_, index) {
