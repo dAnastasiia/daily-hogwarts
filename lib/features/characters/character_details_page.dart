@@ -19,18 +19,6 @@ class CharacterDetailsPage extends StatelessWidget {
     required this.id,
   });
 
-  String _getValue(dynamic value) {
-    if (value is int || value is double) {
-      return value.toString();
-    }
-
-    return (value == null || value.isEmpty) ? '-' : value.toString();
-  }
-
-  String _getWandDetail(String label, String value) {
-    return '$label: ${_getValue(value)}';
-  }
-
   @override
   Widget build(BuildContext context) {
     final t = context.t;
@@ -59,7 +47,7 @@ class CharacterDetailsPage extends StatelessWidget {
               return switch (state) {
                 CharacterLoading() => const LoadingIndicator(),
                 CharacterSuccess() =>
-                  _buildCharacterProfile(state.character, context),
+                  _CharacterProfile(character: state.character),
                 CharacterError() => CustomMessage(
                     message: t.getDynamicLocalizedString(state.error),
                     buttonText: t.repeat,
@@ -73,8 +61,29 @@ class CharacterDetailsPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildCharacterProfile(Character character, BuildContext context) {
+class _CharacterProfile extends StatelessWidget {
+  final Character character;
+
+  const _CharacterProfile({
+    required this.character,
+  });
+
+  String _getValue(dynamic value) {
+    if (value is int || value is double) {
+      return value.toString();
+    }
+
+    return (value == null || value.isEmpty) ? '-' : value.toString();
+  }
+
+  String _getWandDetail(String label, String value) {
+    return '$label: ${_getValue(value)}';
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final t = context.t;
 
     return Padding(
