@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 
 class CustomFilledButton extends StatelessWidget {
   final String title;
-  final VoidCallback onPressed;
+  final bool isLoading;
   final Color? backgroundColor;
   final Color? foregroundColor;
+  final VoidCallback onPressed;
 
   const CustomFilledButton({
     super.key,
     required this.title,
-    required this.onPressed,
+    this.isLoading = false,
     this.backgroundColor,
     this.foregroundColor,
+    required this.onPressed,
   });
 
   @override
@@ -26,9 +28,26 @@ class CustomFilledButton extends StatelessWidget {
           horizontal: 16.0,
         ),
       ),
-      child: Text(
-        title,
-        style: const TextStyle(fontSize: 16),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (isLoading)
+            const Padding(
+              padding: EdgeInsets.only(right: 8.0),
+              child: SizedBox(
+                height: 16.0,
+                width: 16.0,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2.0,
+                ),
+              ),
+            ),
+          Text(
+            title,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ],
       ),
     );
   }

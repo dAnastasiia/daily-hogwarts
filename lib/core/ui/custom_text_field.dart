@@ -6,12 +6,14 @@ class CustomTextField extends StatelessWidget {
   final String labelText;
   final bool isRequired;
   final List<Validation<String>>? validators;
+  final void Function(String?)? onSaved;
 
   const CustomTextField({
     super.key,
     required this.labelText,
     this.isRequired = false,
     this.validators,
+    this.onSaved,
   });
 
   @override
@@ -25,6 +27,7 @@ class CustomTextField extends StatelessWidget {
         if (isRequired) const RequiredValidation(),
         if (validators != null) ...validators!,
       ]),
+      onSaved: onSaved,
     );
   }
 }

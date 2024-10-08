@@ -100,7 +100,7 @@ final List<Character> characters = [
     alternateActors: ["Michael Gambon"],
     alive: false,
     image:
-        "https://static.wikia.nocookie.net/characters/images/8/88/Dumbledore.jpg/revision/latest?cb=20240824182238",
+        "https://static.wikia.nocookie.net/characters/images/8/88/Dumbledore.jpg",
   ),
   Character(
     id: "3569d265-bd27-44d8-88e8-82fb0a848374",
