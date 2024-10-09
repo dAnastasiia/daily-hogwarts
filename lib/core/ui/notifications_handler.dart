@@ -5,7 +5,7 @@ class NotificationHandler {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(errorMessage),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.red[100],
       ),
     );
   }
@@ -14,7 +14,7 @@ class NotificationHandler {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(warningMessage),
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.orange[100],
       ),
     );
   }
@@ -23,7 +23,7 @@ class NotificationHandler {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(successMessage),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.green[100],
       ),
     );
   }
@@ -32,7 +32,7 @@ class NotificationHandler {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(infoMessage),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue[100],
       ),
     );
   }
