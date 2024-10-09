@@ -25,7 +25,7 @@ class _SignupPageState extends State<SignupPage> {
   String? _email;
   String? _password;
 
-  void _saveForm(
+  void _submitForm(
     AuthViewModel authProvider,
     VoidCallback onSuccess,
     Function(String) onError,
@@ -149,18 +149,14 @@ class _SignupPageState extends State<SignupPage> {
                   CustomFilledButton(
                     title: t.letsGo,
                     isLoading: authProvider.isLoading,
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        _saveForm(
-                          authProvider,
-                          () => context.goNamed(Routes.home.name),
-                          (error) => NotificationHandler.showError(
-                            context,
-                            error,
-                          ),
-                        );
-                      }
-                    },
+                    onPressed: () => _submitForm(
+                      authProvider,
+                      () => context.goNamed(Routes.home.name),
+                      (error) => NotificationHandler.showError(
+                        context,
+                        error,
+                      ),
+                    ),
                     backgroundColor: Colors.deepPurple,
                     foregroundColor: Colors.white,
                   ),

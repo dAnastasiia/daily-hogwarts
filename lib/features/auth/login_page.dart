@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   String? _email;
   String? _password;
 
-  void _saveForm(
+  void _submitForm(
     AuthViewModel authProvider,
     VoidCallback onSuccess,
     Function(String) onError,
@@ -94,18 +94,14 @@ class _LoginPageState extends State<LoginPage> {
                 CustomFilledButton(
                   title: t.login,
                   isLoading: authProvider.isLoading,
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      _saveForm(
-                        authProvider,
-                        () => context.goNamed(Routes.home.name),
-                        (error) => NotificationHandler.showError(
-                          context,
-                          error,
-                        ),
-                      );
-                    }
-                  },
+                  onPressed: () => _submitForm(
+                    authProvider,
+                    () => context.goNamed(Routes.home.name),
+                    (error) => NotificationHandler.showError(
+                      context,
+                      error,
+                    ),
+                  ),
                   backgroundColor: Colors.deepPurple,
                   foregroundColor: Colors.white,
                 ),
