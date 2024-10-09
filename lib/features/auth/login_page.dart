@@ -19,6 +19,18 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
 
+  String? _email;
+  String? _password;
+
+  void _submitForm(AuthViewModel authProvider) async {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+
+      authProvider.login();
+      context.goNamed(Routes.home.name);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final t = context.t;
@@ -51,14 +63,17 @@ class _LoginPageState extends State<LoginPage> {
                         RequiredValidation(),
                         EmailValidation(),
                       ],
+                      onSaved: (value) => _email = value,
                     ),
                     CustomTextField(
                       labelText: t.password,
                       isRequired: true,
+                      isObscured: true,
                       validators: const [
                         RequiredValidation(),
                         PasswordValidation(),
                       ],
+                      onSaved: (value) => _password = value,
                     ),
                   ],
                   spacing: 20,
@@ -66,13 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 48),
                 CustomFilledButton(
                   title: t.login,
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      // // * Success login imitation
-                      // authProvider.login();
-                      // context.goNamed(Routes.home.name);
-                    }
-                  },
+                  onPressed: () => _submitForm(authProvider),
                   backgroundColor: Colors.deepPurple,
                   foregroundColor: Colors.white,
                 ),
