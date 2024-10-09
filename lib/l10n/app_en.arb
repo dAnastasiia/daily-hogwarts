@@ -197,5 +197,21 @@
   "noData": "No data available",
   "@noData": {
     "description": "Message for case when no data is available"
+  },
+  "required": "Required",
+  "@required": {
+    "description": "Required field message"
+  },
+  "invalidEmail": "Invalid email",
+  "@invalidEmail": {
+    "description": "Invalid email message"
+  },
+  "invalidPassword": "Invalid password",
+  "@invalidPassword": {
+    "description": "Invalid password message"
+  },
+  "invalidName": "Invalid name",
+  "@invalidName": {
+    "description": "Invalid name message"
   }
 }
