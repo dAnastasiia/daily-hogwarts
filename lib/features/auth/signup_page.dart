@@ -19,6 +19,19 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   final formKey = GlobalKey<FormState>();
 
+  String? _username;
+  String? _email;
+  String? _password;
+
+  void _submitForm(AuthViewModel authProvider) async {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+
+      authProvider.signup();
+      context.goNamed(Routes.home.name);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final t = context.t;
@@ -60,6 +73,7 @@ class _SignupPageState extends State<SignupPage> {
                           RequiredValidation(),
                           NameValidation(),
                         ],
+                        onSaved: (value) => _username = value,
                       ),
                       CustomTextField(
                         labelText: t.email,
@@ -68,14 +82,17 @@ class _SignupPageState extends State<SignupPage> {
                           RequiredValidation(),
                           EmailValidation(),
                         ],
+                        onSaved: (value) => _email = value,
                       ),
                       CustomTextField(
                         labelText: t.password,
                         isRequired: true,
+                        isObscured: true,
                         validators: const [
                           RequiredValidation(),
                           PasswordValidation(),
                         ],
+                        onSaved: (value) => _password = value,
                       ),
                     ],
                     spacing: 20,
@@ -97,6 +114,7 @@ class _SignupPageState extends State<SignupPage> {
                         validators: const [
                           RequiredValidation(),
                         ],
+                        onSaved: (value) {},
                       ),
                       CustomTextField(
                         labelText: t.bestQualityQuestion,
@@ -118,13 +136,7 @@ class _SignupPageState extends State<SignupPage> {
                   const SizedBox(height: 60),
                   CustomFilledButton(
                     title: t.letsGo,
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        // // * Success signup imitation
-                        // authProvider.signup();
-                        // context.goNamed(Routes.home.name);
-                      }
-                    },
+                    onPressed: () => _submitForm(authProvider),
                     backgroundColor: Colors.deepPurple,
                     foregroundColor: Colors.white,
                   ),
