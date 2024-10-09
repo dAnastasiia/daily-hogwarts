@@ -5,10 +5,10 @@ extension LocalizationUtilsExtension on AppLocalizations {
   // investigate if there is a more efficient way to do this
   String getDynamicLocalizedString(String key) {
     final Map<String, String> localizedStrings = {
-      Houses.gryffindor.name: gryffindor,
-      Houses.slytherin.name: slytherin,
-      Houses.ravenclaw.name: ravenclaw,
-      Houses.hufflepuff.name: hufflepuff,
+      House.gryffindor.name: gryffindor,
+      House.slytherin.name: slytherin,
+      House.ravenclaw.name: ravenclaw,
+      House.hufflepuff.name: hufflepuff,
     };
 
     return localizedStrings[key] ?? key;

@@ -14,7 +14,7 @@ class FlexibleAppBar extends StatelessWidget {
     final orientation = MediaQuery.orientationOf(context);
     final t = context.t;
 
-    return Selector<AuthViewModel, Houses>(
+    return Selector<AuthViewModel, House>(
       selector: (_, provider) => provider.house,
       builder: (_, house, ___) => SliverAppBar(
         pinned: true,

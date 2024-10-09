@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum Houses {
+enum House {
   gryffindor("gryffindor", Colors.redAccent),
   slytherin("slytherin", Colors.green),
   ravenclaw("ravenclaw", Colors.blueAccent),
@@ -9,5 +9,12 @@ enum Houses {
   final String name;
   final Color color;
 
-  const Houses(this.name, this.color);
+  const House(this.name, this.color);
+
+  static House fromString(String houseString) {
+    return House.values.firstWhere(
+      (house) => house.name == houseString.toLowerCase(),
+      orElse: () => House.gryffindor,
+    );
+  }
 }
