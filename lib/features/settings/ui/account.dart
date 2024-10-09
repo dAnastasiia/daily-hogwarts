@@ -1,6 +1,8 @@
 import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_card.dart';
+import 'package:daily_hogwarts/core/ui/loading_indicator.dart';
+import 'package:daily_hogwarts/core/ui/notifications_handler.dart';
 import 'package:daily_hogwarts/core/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,34 +16,42 @@ class Account extends StatelessWidget {
     final t = context.t;
 
     return Consumer<AuthViewModel>(
-      builder: (_, authProvider, __) => CustomCard(
-        title: t.account,
-        children: [
-          _MenuItem(
-            itemTitle: t.privacyPolicy,
-            onTap: () {},
-          ),
-          _MenuItem(
-            itemTitle: t.termsAndConditions,
-            onTap: () {},
-          ),
-          const Divider(),
-          ListTile(
-            title: Text(
-              t.logout,
-              style: const TextStyle(
-                color: Colors.red,
+      builder: (_, authProvider, __) {
+        if (authProvider.isLoading) {
+          return const LoadingIndicator();
+        }
+
+        return CustomCard(
+          title: t.account,
+          children: [
+            _MenuItem(
+              itemTitle: t.privacyPolicy,
+              onTap: () {},
+            ),
+            _MenuItem(
+              itemTitle: t.termsAndConditions,
+              onTap: () {},
+            ),
+            const Divider(),
+            ListTile(
+              title: Text(
+                t.logout,
+                style: const TextStyle(
+                  color: Colors.red,
+                ),
+              ),
+              leading: const Icon(Icons.logout, color: Colors.red),
+              onTap: () => authProvider.logout(
+                () => context.goNamed(Routes.start.name),
+                (error) => NotificationHandler.showError(
+                  context,
+                  error,
+                ),
               ),
             ),
-            leading: const Icon(Icons.logout, color: Colors.red),
-            onTap: () {
-              // * Success logout imitation
-              authProvider.logout();
-              context.goNamed(Routes.start.name);
-            },
-          ),
-        ],
-      ),
+          ],
+        );
+      },
     );
   }
 }

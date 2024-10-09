@@ -1,7 +1,9 @@
+import 'package:daily_hogwarts/core/data/auth_payload.dart';
 import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_filled_button.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_field.dart';
+import 'package:daily_hogwarts/core/ui/notifications_handler.dart';
 import 'package:daily_hogwarts/core/utils/forms/validation.dart';
 import 'package:daily_hogwarts/core/utils/methods/get_prettified_widgets_list.dart';
 import 'package:daily_hogwarts/core/utils/routes.dart';
@@ -18,6 +20,30 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final formKey = GlobalKey<FormState>();
+
+  String? _username;
+  String? _email;
+  String? _password;
+
+  void _saveForm(
+    AuthViewModel authProvider,
+    VoidCallback onSuccess,
+    Function(String) onError,
+  ) async {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+
+      await authProvider.signup(
+        AuthPayload(
+          email: _email!,
+          password: _password!,
+          username: _username!,
+        ),
+        onSuccess,
+        onError,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +62,6 @@ class _SignupPageState extends State<SignupPage> {
             horizontal: 16.0,
           ),
           child: SingleChildScrollView(
-            // Add SingleChildScrollView
             child: Form(
               key: formKey,
               child: Column(
@@ -60,6 +85,7 @@ class _SignupPageState extends State<SignupPage> {
                           RequiredValidation(),
                           NameValidation(),
                         ],
+                        onSaved: (value) => _username = value,
                       ),
                       CustomTextField(
                         labelText: t.email,
@@ -68,14 +94,17 @@ class _SignupPageState extends State<SignupPage> {
                           RequiredValidation(),
                           EmailValidation(),
                         ],
+                        onSaved: (value) => _email = value,
                       ),
                       CustomTextField(
                         labelText: t.password,
                         isRequired: true,
+                        isObscured: true,
                         validators: const [
                           RequiredValidation(),
                           PasswordValidation(),
                         ],
+                        onSaved: (value) => _password = value,
                       ),
                     ],
                     spacing: 20,
@@ -97,6 +126,7 @@ class _SignupPageState extends State<SignupPage> {
                         validators: const [
                           RequiredValidation(),
                         ],
+                        onSaved: (value) {},
                       ),
                       CustomTextField(
                         labelText: t.bestQualityQuestion,
@@ -118,11 +148,17 @@ class _SignupPageState extends State<SignupPage> {
                   const SizedBox(height: 60),
                   CustomFilledButton(
                     title: t.letsGo,
+                    isLoading: authProvider.isLoading,
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        // // * Success signup imitation
-                        // authProvider.signup();
-                        // context.goNamed(Routes.home.name);
+                        _saveForm(
+                          authProvider,
+                          () => context.goNamed(Routes.home.name),
+                          (error) => NotificationHandler.showError(
+                            context,
+                            error,
+                          ),
+                        );
                       }
                     },
                     backgroundColor: Colors.deepPurple,
