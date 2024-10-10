@@ -1,85 +1,48 @@
 import 'dart:math';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:daily_hogwarts/core/data/auth_payload.dart';
+import 'package:daily_hogwarts/core/data/auth_user.dart';
 import 'package:daily_hogwarts/core/data/user_model.dart';
+import 'package:daily_hogwarts/core/utils/auth_client_interface.dart';
 import 'package:daily_hogwarts/core/utils/enums/houses.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepository {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final AuthClientInterface _authClient;
 
-  Stream<User?> authStateChanges() {
-    return _firebaseAuth.authStateChanges();
+  AuthRepository(this._authClient);
+
+  Stream<AuthUser?> authStateChanges() {
+    return _authClient.authStateChanges();
   }
 
-  Future<UserCredential> login(String email, String password) async {
-    try {
-      return await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-    } catch (error) {
-      if (error is FirebaseAuthException) {
-        throw Exception(
-          error.message,
-        );
-      } else {
-        throw Exception(error);
-      }
-    }
+  Future<AuthUserCredential> login(String email, String password) async {
+    return await _authClient.login(email, password);
   }
 
   Future<String> signup(String email, String password, String username) async {
-    try {
-      UserCredential userCredential =
-          await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      return userCredential.user!.uid;
-    } catch (error) {
-      throw Exception(error);
-    }
+    return await _authClient.signup(email, password, username);
   }
 
   Future<void> logout() async {
-    try {
-      await _firebaseAuth.signOut();
-    } catch (error) {
-      throw Exception('Failed to logout: $error');
-    }
+    await _authClient.logout();
   }
 
   Future<UserModel?> getUserData(String uid) async {
-    try {
-      DocumentSnapshot userDoc =
-          await _firestore.collection('users').doc(uid).get();
-
-      if (userDoc.exists) {
-        return UserModel.fromMap(userDoc.data() as Map<String, dynamic>);
-      } else {
-        return null;
-      }
-    } catch (error) {
-      throw Exception('Failed to fetch user data: $error');
-    }
+    return await _authClient.getUserData(uid);
   }
 
   Future<void> setUserData(String uid, AuthPayload payload) async {
     House house = _getRandomHouse();
-    try {
-      await _firestore.collection('users').doc(uid).set({
+
+    await _authClient.setUserData(
+      uid,
+      {
         'id': uid,
         'username': payload.username,
         'email': payload.email,
         'house': house.name,
-      });
-    } catch (error) {
-      throw Exception('Failed to set user data: $error');
-    }
+      },
+    );
   }
 
   House _getRandomHouse() {

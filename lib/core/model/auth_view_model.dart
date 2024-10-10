@@ -1,15 +1,16 @@
 import 'dart:async';
 
+import 'package:daily_hogwarts/core/api/firebase_client.dart';
 import 'package:daily_hogwarts/core/data/auth_payload.dart';
+import 'package:daily_hogwarts/core/data/auth_user.dart';
 import 'package:daily_hogwarts/core/data/user_model.dart';
 import 'package:daily_hogwarts/core/utils/enums/houses.dart';
 import 'package:daily_hogwarts/features/auth/data/auth_repository.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthViewModel extends ChangeNotifier {
-  final AuthRepository _authRepository = AuthRepository();
-  late final StreamSubscription<User?> _authStateSubscription;
+  final AuthRepository _authRepository = AuthRepository(FirebaseClient());
+  late final StreamSubscription<AuthUser?> _authStateSubscription;
 
   bool _isAuthenticated = false;
   bool _isLoading = false;
@@ -18,7 +19,7 @@ class AuthViewModel extends ChangeNotifier {
 
   AuthViewModel() {
     _authStateSubscription =
-        _authRepository.authStateChanges().listen((User? user) {
+        _authRepository.authStateChanges().listen((AuthUser? user) {
       if (user != null) {
         _loadUser(user.uid);
       } else {
@@ -37,12 +38,12 @@ class AuthViewModel extends ChangeNotifier {
     VoidCallback onSuccess,
     Function(String) onError,
   ) =>
-      _performOperation(
+      _performAction(
         () async {
-          UserCredential userCredential =
+          AuthUserCredential userCredential =
               await _authRepository.login(payload.email, payload.password!);
 
-          await _loadUser(userCredential.user!.uid);
+          await _loadUser(userCredential.user.uid);
           onSuccess();
         },
         onError,
@@ -53,7 +54,7 @@ class AuthViewModel extends ChangeNotifier {
     VoidCallback onSuccess,
     Function(String) onError,
   ) =>
-      _performOperation(
+      _performAction(
         () async {
           String uid = await _authRepository.signup(
             payload.email,
@@ -76,7 +77,7 @@ class AuthViewModel extends ChangeNotifier {
     VoidCallback onSuccess,
     Function(String) onError,
   ) =>
-      _performOperation(
+      _performAction(
         () async {
           await _authRepository.logout();
 
@@ -86,7 +87,7 @@ class AuthViewModel extends ChangeNotifier {
         onError,
       );
 
-  Future<void> _loadUser(String uid) => _performOperation(
+  Future<void> _loadUser(String uid) => _performAction(
         () async {
           _user = await _authRepository.getUserData(uid);
 
@@ -98,7 +99,7 @@ class AuthViewModel extends ChangeNotifier {
         (e) => throw ErrorDescription(e.toString()),
       );
 
-  Future<void> _performOperation(
+  Future<void> _performAction(
     Function() action,
     Function(String) onError,
   ) async {
