@@ -13,7 +13,7 @@ class AuthViewModel extends ChangeNotifier {
 
   bool _isAuthenticated = false;
   bool _isLoading = false;
-  House house = House.gryffindor;
+  House _house = House.gryffindor;
   UserModel? _user;
 
   AuthViewModel() {
@@ -29,6 +29,7 @@ class AuthViewModel extends ChangeNotifier {
 
   bool get isAuthenticated => _isAuthenticated;
   bool get isLoading => _isLoading;
+  House get house => _house;
   UserModel? get user => _user;
 
   Future<void> login(
@@ -91,7 +92,7 @@ class AuthViewModel extends ChangeNotifier {
 
           if (_user != null) {
             _isAuthenticated = true;
-            house = House.fromString(_user!.house);
+            _house = House.fromString(_user!.house);
           }
         },
         (e) => throw ErrorDescription(e.toString()),
