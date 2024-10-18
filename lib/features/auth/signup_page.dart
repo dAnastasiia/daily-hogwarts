@@ -4,6 +4,7 @@ import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_filled_button.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_field.dart';
 import 'package:daily_hogwarts/core/ui/notifications_handler.dart';
+import 'package:daily_hogwarts/core/utils/enums/auth_status.dart';
 import 'package:daily_hogwarts/core/utils/forms/validation.dart';
 import 'package:daily_hogwarts/core/utils/methods/get_prettified_widgets_list.dart';
 import 'package:daily_hogwarts/core/utils/routes.dart';
@@ -25,22 +26,16 @@ class _SignupPageState extends State<SignupPage> {
   String? _email;
   String? _password;
 
-  void _submitForm(
-    AuthViewModel authProvider,
-    VoidCallback onSuccess,
-    Function(String) onError,
-  ) async {
+  void _submitForm(AuthViewModel authProvider) async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
 
-      await authProvider.signup(
+      authProvider.signup(
         AuthPayload(
           email: _email!,
           password: _password!,
           username: _username!,
         ),
-        onSuccess,
-        onError,
       );
     }
   }
@@ -57,114 +52,125 @@ class _SignupPageState extends State<SignupPage> {
         ),
       ),
       body: Consumer<AuthViewModel>(
-        builder: (_, authProvider, __) => Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-          ),
-          child: SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    t.mainInfo,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  ...getPrettifiedWidgetsList(
-                    entries: [
-                      CustomTextField(
-                        labelText: t.username,
-                        isRequired: true,
-                        validators: const [
-                          RequiredValidation(),
-                          NameValidation(),
-                        ],
-                        onSaved: (value) => _username = value,
-                      ),
-                      CustomTextField(
-                        labelText: t.email,
-                        isRequired: true,
-                        validators: const [
-                          RequiredValidation(),
-                          EmailValidation(),
-                        ],
-                        onSaved: (value) => _email = value,
-                      ),
-                      CustomTextField(
-                        labelText: t.password,
-                        isRequired: true,
-                        isObscured: true,
-                        validators: const [
-                          RequiredValidation(),
-                          PasswordValidation(),
-                        ],
-                        onSaved: (value) => _password = value,
-                      ),
-                    ],
-                    spacing: 20,
-                  ),
-                  const SizedBox(height: 60),
-                  Text(
-                    t.sortingHatQuestions,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  ...getPrettifiedWidgetsList(
-                    entries: [
-                      CustomTextField(
-                        labelText: t.creatureQuestion,
-                        isRequired: true,
-                        validators: const [
-                          RequiredValidation(),
-                        ],
-                        onSaved: (value) {},
-                      ),
-                      CustomTextField(
-                        labelText: t.bestQualityQuestion,
-                        isRequired: true,
-                        validators: const [
-                          RequiredValidation(),
-                        ],
-                      ),
-                      CustomTextField(
-                        labelText: t.dreamQuestion,
-                        isRequired: true,
-                        validators: const [
-                          RequiredValidation(),
-                        ],
-                      ),
-                    ],
-                    spacing: 20,
-                  ),
-                  const SizedBox(height: 60),
-                  CustomFilledButton(
-                    title: t.letsGo,
-                    isLoading: authProvider.isLoading,
-                    onPressed: () => _submitForm(
-                      authProvider,
-                      () => context.goNamed(Routes.home.name),
-                      (error) => NotificationHandler.showError(
-                        context,
-                        error,
+        builder: (_, authProvider, __) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (authProvider.status == AuthStatus.loggedIn) {
+              context.goNamed(Routes.home.name);
+            }
+
+            if (authProvider.status == AuthStatus.error &&
+                authProvider.errorMessage.isNotEmpty) {
+              NotificationHandler.showError(
+                context,
+                authProvider.errorMessage,
+              );
+
+              authProvider.resetError();
+            }
+          });
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+            ),
+            child: SingleChildScrollView(
+              child: Form(
+                key: formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      t.mainInfo,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    backgroundColor: Colors.deepPurple,
-                    foregroundColor: Colors.white,
-                  ),
-                ],
+                    const SizedBox(height: 12),
+                    ...getPrettifiedWidgetsList(
+                      entries: [
+                        CustomTextField(
+                          labelText: t.username,
+                          isRequired: true,
+                          validators: const [
+                            RequiredValidation(),
+                            NameValidation(),
+                          ],
+                          onSaved: (value) => _username = value,
+                        ),
+                        CustomTextField(
+                          labelText: t.email,
+                          isRequired: true,
+                          validators: const [
+                            RequiredValidation(),
+                            EmailValidation(),
+                          ],
+                          onSaved: (value) => _email = value,
+                        ),
+                        CustomTextField(
+                          labelText: t.password,
+                          isRequired: true,
+                          isObscured: true,
+                          validators: const [
+                            RequiredValidation(),
+                            PasswordValidation(),
+                          ],
+                          onSaved: (value) => _password = value,
+                        ),
+                      ],
+                      spacing: 20,
+                    ),
+                    const SizedBox(height: 60),
+                    Text(
+                      t.sortingHatQuestions,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    ...getPrettifiedWidgetsList(
+                      entries: [
+                        CustomTextField(
+                          labelText: t.creatureQuestion,
+                          isRequired: true,
+                          validators: const [
+                            RequiredValidation(),
+                          ],
+                          onSaved: (value) {},
+                        ),
+                        CustomTextField(
+                          labelText: t.bestQualityQuestion,
+                          isRequired: true,
+                          validators: const [
+                            RequiredValidation(),
+                          ],
+                        ),
+                        CustomTextField(
+                          labelText: t.dreamQuestion,
+                          isRequired: true,
+                          validators: const [
+                            RequiredValidation(),
+                          ],
+                        ),
+                      ],
+                      spacing: 20,
+                    ),
+                    const SizedBox(height: 60),
+                    CustomFilledButton(
+                      title: t.letsGo,
+                      isLoading: authProvider.isLoading,
+                      onPressed: () => _submitForm(authProvider),
+                      backgroundColor: Colors.deepPurple,
+                      foregroundColor: Colors.white,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

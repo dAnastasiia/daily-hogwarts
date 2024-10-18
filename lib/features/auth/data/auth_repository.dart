@@ -4,7 +4,7 @@ import 'package:daily_hogwarts/core/data/auth_payload.dart';
 import 'package:daily_hogwarts/core/data/auth_user.dart';
 import 'package:daily_hogwarts/core/data/user_model.dart';
 import 'package:daily_hogwarts/core/utils/auth_client_interface.dart';
-import 'package:daily_hogwarts/core/utils/enums/houses.dart';
+import 'package:daily_hogwarts/core/utils/enums/house.dart';
 
 class AuthRepository {
   final AuthClientInterface _authClient;

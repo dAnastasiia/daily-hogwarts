@@ -1,8 +1,8 @@
-enum Languages {
+enum Language {
   english("en"),
   french("fr");
 
   final String name;
 
-  const Languages(this.name);
+  const Language(this.name);
 }

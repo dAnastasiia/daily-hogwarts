@@ -1,9 +1,9 @@
-import 'package:daily_hogwarts/core/utils/enums/languages.dart';
+import 'package:daily_hogwarts/core/utils/enums/language.dart';
 import 'package:flutter/material.dart';
 
 class SettingsViewModel with ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.system;
-  String _locale = Languages.english.name;
+  String _locale = Language.english.name;
 
   ThemeMode get themeMode => _themeMode;
   String get locale => _locale;
@@ -14,7 +14,7 @@ class SettingsViewModel with ChangeNotifier {
   }
 
   void setLocale(String? locale) {
-    _locale = locale ?? Languages.english.name;
+    _locale = locale ?? Language.english.name;
     notifyListeners();
   }
 }

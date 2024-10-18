@@ -4,7 +4,8 @@ import 'package:daily_hogwarts/core/api/firebase_client.dart';
 import 'package:daily_hogwarts/core/data/auth_payload.dart';
 import 'package:daily_hogwarts/core/data/auth_user.dart';
 import 'package:daily_hogwarts/core/data/user_model.dart';
-import 'package:daily_hogwarts/core/utils/enums/houses.dart';
+import 'package:daily_hogwarts/core/utils/enums/auth_status.dart';
+import 'package:daily_hogwarts/core/utils/enums/house.dart';
 import 'package:daily_hogwarts/features/auth/data/auth_repository.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,8 @@ class AuthViewModel extends ChangeNotifier {
 
   bool _isAuthenticated = false;
   bool _isLoading = false;
+  AuthStatus _status = AuthStatus.notLoggedIn;
+  String _errorMessage = '';
   House _house = House.gryffindor;
   UserModel? _user;
 
@@ -32,11 +35,11 @@ class AuthViewModel extends ChangeNotifier {
   bool get isLoading => _isLoading;
   House get house => _house;
   UserModel? get user => _user;
+  AuthStatus get status => _status;
+  String get errorMessage => _errorMessage;
 
   Future<void> login(
     AuthPayload payload,
-    VoidCallback onSuccess,
-    Function(String) onError,
   ) =>
       _performAction(
         () async {
@@ -44,15 +47,12 @@ class AuthViewModel extends ChangeNotifier {
               await _authRepository.login(payload.email, payload.password!);
 
           await _loadUser(userCredential.user.uid);
-          onSuccess();
+          _status = AuthStatus.loggedIn;
         },
-        onError,
       );
 
   Future<void> signup(
     AuthPayload payload,
-    VoidCallback onSuccess,
-    Function(String) onError,
   ) =>
       _performAction(
         () async {
@@ -63,52 +63,40 @@ class AuthViewModel extends ChangeNotifier {
           );
 
           await _authRepository.setUserData(uid, payload);
-
-          await login(
-            payload,
-            onSuccess,
-            onError,
-          );
+          await login(payload);
         },
-        onError,
       );
 
-  Future<void> logout(
-    VoidCallback onSuccess,
-    Function(String) onError,
-  ) =>
-      _performAction(
+  Future<void> logout() => _performAction(
         () async {
           await _authRepository.logout();
-
           _setUser(null);
-          onSuccess();
         },
-        onError,
       );
 
   Future<void> _loadUser(String uid) => _performAction(
         () async {
-          _user = await _authRepository.getUserData(uid);
+          UserModel? user = await _authRepository.getUserData(uid);
+
+          _setUser(user);
 
           if (_user != null) {
-            _isAuthenticated = true;
             _house = House.fromString(_user!.house);
           }
         },
-        (e) => throw ErrorDescription(e.toString()),
       );
 
   Future<void> _performAction(
     Function() action,
-    Function(String) onError,
   ) async {
     _isLoading = true;
     notifyListeners();
     try {
       await action();
+      _errorMessage = "";
     } catch (e) {
-      onError(e.toString());
+      _status = AuthStatus.error;
+      _errorMessage = e.toString();
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -118,6 +106,13 @@ class AuthViewModel extends ChangeNotifier {
   void _setUser(UserModel? user) {
     _user = user;
     _isAuthenticated = user != null;
+    _status = user != null ? AuthStatus.loggedIn : AuthStatus.notLoggedIn;
+
+    notifyListeners();
+  }
+
+  void resetError() {
+    _errorMessage = "";
     notifyListeners();
   }
 
