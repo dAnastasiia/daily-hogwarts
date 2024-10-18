@@ -2,7 +2,7 @@ import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/model/settings_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_card.dart';
 import 'package:daily_hogwarts/core/ui/custom_dropdown.dart';
-import 'package:daily_hogwarts/core/utils/enums/languages.dart';
+import 'package:daily_hogwarts/core/utils/enums/language.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,8 +16,8 @@ class Customization extends StatelessWidget {
     final t = context.t;
 
     Map<String, String> languages = {
-      Languages.english.name: t.english,
-      Languages.french.name: t.french,
+      Language.english.name: t.english,
+      Language.french.name: t.french,
     };
 
     return CustomCard(

@@ -1,4 +1,4 @@
-import 'package:daily_hogwarts/core/utils/enums/houses.dart';
+import 'package:daily_hogwarts/core/utils/enums/house.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 extension LocalizationUtilsExtension on AppLocalizations {
