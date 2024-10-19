@@ -1,6 +1,7 @@
 import 'package:daily_hogwarts/core/data/character_model.dart';
 import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/extensions/localization_utils_extension.dart';
+import 'package:daily_hogwarts/core/ui/custom_avatar.dart';
 import 'package:daily_hogwarts/core/ui/custom_message.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_list.dart';
 import 'package:daily_hogwarts/core/ui/indented_text.dart';
@@ -92,12 +93,8 @@ class _CharacterProfile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
-            child: CircleAvatar(
-              backgroundImage: character.image.isNotEmpty
-                  ? NetworkImage(character.image)
-                  : const AssetImage(
-                      'assets/images/default-avatar.jpg',
-                    ),
+            child: CustomAvatar(
+              src: character.image,
               radius: 75,
             ),
           ),

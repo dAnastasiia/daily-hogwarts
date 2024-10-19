@@ -26,7 +26,9 @@ class CharactersPage extends StatelessWidget {
             CharactersSuccess() =>
               _CharactersList(characters: state.characters),
             CharactersError() => CustomMessage(
-                message: t.getDynamicLocalizedString(state.error),
+                message: t.getDynamicLocalizedString(
+                  state.error,
+                ), // investigate how to make messages localized
                 buttonText: t.repeat,
                 onPressed: () =>
                     context.read<CharactersBloc>().add(FetchCharacters()),

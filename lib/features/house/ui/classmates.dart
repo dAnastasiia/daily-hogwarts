@@ -1,9 +1,15 @@
+import 'package:daily_hogwarts/core/data/character_model.dart';
 import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
+import 'package:daily_hogwarts/core/model/auth_view_model.dart';
+import 'package:daily_hogwarts/core/ui/custom_message.dart';
+import 'package:daily_hogwarts/core/ui/loading_indicator.dart';
 import 'package:daily_hogwarts/core/ui/prettified_field_value.dart';
-import 'package:daily_hogwarts/core/utils/mock_characters.dart';
-import 'package:daily_hogwarts/core/utils/routes.dart';
+import 'package:daily_hogwarts/core/utils/enums/house.dart';
+import 'package:daily_hogwarts/features/house/bloc/classmates/classmates_bloc.dart';
+import 'package:daily_hogwarts/features/house/ui/student_card.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class Classmates extends StatelessWidget {
   const Classmates({super.key});
@@ -24,71 +30,54 @@ class Classmates extends StatelessWidget {
             ),
             child: PrettifiedFieldValue(title: t.classmates),
           ),
-          SizedBox(
-            height: 200.0,
-            child: PageView.builder(
-              itemCount: students.length,
-              itemBuilder: (_, index) {
-                final student = students[index];
-
-                return GestureDetector(
-                  onTap: () => context.pushNamed(
-                    Routes.characterDetails.name,
-                    pathParameters: {'id': student.id},
-                  ),
-                  child: Card(
-                    margin: const EdgeInsets.all(16.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    elevation: 4,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CircleAvatar(
-                            radius: 50,
-                            backgroundImage: NetworkImage(student.image),
-                          ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  student.name,
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                if (student.alternateNames.isNotEmpty)
-                                  Text(
-                                    student.alternateNames.join(', '),
-                                    maxLines: 4,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.grey.shade700,
-                                    ),
-                                  ),
-                              ],
-                            ),
-                          ),
-                        ],
+          Selector<AuthViewModel, House>(
+            selector: (_, provider) => provider.house,
+            builder: (_, house, ___) => BlocProvider(
+              create: (_) => ClassmatesBloc()..add(FetchClassmates(house.name)),
+              child: BlocBuilder<ClassmatesBloc, ClassmatesState>(
+                builder: (_, state) {
+                  return switch (state) {
+                    ClassmatesLoading() => const LoadingIndicator(),
+                    ClassmatesSuccess() =>
+                      _ClassmatesList(classmates: state.classmates),
+                    ClassmatesError() => CustomMessage(
+                        message: state.error,
+                        buttonText: t.repeat,
+                        onPressed: () => context
+                            .read<ClassmatesBloc>()
+                            .add(FetchClassmates(house.name)),
                       ),
-                    ),
-                  ),
-                );
-              },
-              controller: PageController(
-                viewportFraction: 0.85,
+                  };
+                },
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ClassmatesList extends StatelessWidget {
+  final List<Character> classmates;
+
+  const _ClassmatesList({
+    required this.classmates,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 200.0,
+      child: PageView.builder(
+        itemCount: classmates.length,
+        itemBuilder: (_, index) {
+          final student = classmates[index];
+          return StudentCard(student: student);
+        },
+        controller: PageController(
+          viewportFraction: 0.85,
+        ),
       ),
     );
   }

@@ -1,7 +1,6 @@
 import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
-import 'package:daily_hogwarts/core/utils/custom_icons.dart';
+import 'package:daily_hogwarts/core/utils/navigation_items.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final int selectedIndex;
@@ -21,24 +20,12 @@ class CustomNavigationBar extends StatelessWidget {
       onDestinationSelected: onDestinationSelected,
       indicatorColor: Theme.of(context).colorScheme.primaryContainer,
       selectedIndex: selectedIndex,
-      destinations: <Widget>[
-        NavigationDestination(
-          icon: const Icon(CustomIcons.blazon),
-          label: t.houseTab,
-        ),
-        NavigationDestination(
-          icon: const Icon(FontAwesomeIcons.hatWizard),
-          label: t.spellsTab,
-        ),
-        NavigationDestination(
-          icon: const Icon(CustomIcons.castle),
-          label: t.charactersTab,
-        ),
-        NavigationDestination(
-          icon: const Icon(Icons.settings),
-          label: t.settingsTab,
-        ),
-      ],
+      destinations: navigationItems.map((item) {
+        return NavigationDestination(
+          icon: item.icon,
+          label: item.label(context),
+        );
+      }).toList(),
     );
   }
 }

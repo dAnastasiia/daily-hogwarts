@@ -63,4 +63,62 @@ class CharactersRepository {
       );
     }
   }
+
+  Future<List<Character>> fetchTeachers() async {
+    try {
+      final response = await _client.get('characters/staff');
+
+      switch (response.statusCode) {
+        case 200:
+          return (response.data as List)
+              .map((json) => Character.fromJson(json))
+              .toList();
+        case 404:
+          throw Exception(
+            'Teachers not found',
+          );
+        case 500:
+          throw Exception(
+            'Server error. Please try again later.',
+          );
+        default:
+          throw Exception(
+            'Unexpected error occurred: ${response.statusCode}',
+          );
+      }
+    } catch (e) {
+      throw Exception(
+        'Failed to load teachers: $e',
+      );
+    }
+  }
+
+  Future<List<Character>> fetchClassmates(String house) async {
+    try {
+      final response = await _client.get('characters/house/$house');
+
+      switch (response.statusCode) {
+        case 200:
+          return (response.data as List)
+              .map((json) => Character.fromJson(json))
+              .toList();
+        case 404:
+          throw Exception(
+            'Classmates not found',
+          );
+        case 500:
+          throw Exception(
+            'Server error. Please try again later.',
+          );
+        default:
+          throw Exception(
+            'Unexpected error occurred: ${response.statusCode}',
+          );
+      }
+    } catch (e) {
+      throw Exception(
+        'Failed to load classmates: $e',
+      );
+    }
+  }
 }
