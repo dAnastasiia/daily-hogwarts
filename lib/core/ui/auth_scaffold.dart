@@ -1,3 +1,5 @@
+import 'package:daily_hogwarts/core/extensions/screen_size_extension.dart';
+import 'package:daily_hogwarts/core/ui/custom_drawer_navigation.dart';
 import 'package:daily_hogwarts/core/ui/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -13,13 +15,33 @@ class AuthScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isWideScreen = context.isWideScreen;
+    final isExtraWideScreen = context.isExtraWideScreen;
+
     return Scaffold(
-      bottomNavigationBar: CustomNavigationBar(
-        onDestinationSelected: _onDestinationSelected,
-        selectedIndex: navigationShell.currentIndex,
-      ),
+      appBar: isWideScreen && !isExtraWideScreen ? AppBar() : null,
+      drawer: isWideScreen && !isExtraWideScreen
+          ? const CustomDrawerNavigation()
+          : null,
+      bottomNavigationBar: !isWideScreen
+          ? CustomNavigationBar(
+              onDestinationSelected: _onDestinationSelected,
+              selectedIndex: navigationShell.currentIndex,
+            )
+          : null,
       body: SafeArea(
-        child: navigationShell,
+        child: Row(
+          children: [
+            if (isExtraWideScreen)
+              const SizedBox(
+                width: 280,
+                child: CustomDrawerNavigation(),
+              ),
+            Expanded(
+              child: navigationShell,
+            ),
+          ],
+        ),
       ),
     );
   }
