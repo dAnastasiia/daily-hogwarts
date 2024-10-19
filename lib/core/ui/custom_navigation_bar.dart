@@ -1,4 +1,3 @@
-import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/utils/navigation_items.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +13,6 @@ class CustomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final t = context.t;
-
     return NavigationBar(
       onDestinationSelected: onDestinationSelected,
       indicatorColor: Theme.of(context).colorScheme.primaryContainer,

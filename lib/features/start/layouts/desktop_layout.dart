@@ -21,8 +21,8 @@ class DesktopLayout extends StatelessWidget {
           flex: 2,
           child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: 64.0,
-              vertical: 64.0,
+              horizontal: 80.0,
+              vertical: 80.0,
             ),
             child: ButtonsBlock(),
           ),
