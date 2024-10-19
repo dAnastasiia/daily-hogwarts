@@ -14,7 +14,7 @@ class CustomDrawerNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isExtraWideScreen = context.isExtraWideScreen;
+    final isDesktopScreen = context.isDesktopScreen;
 
     return Drawer(
       child: ListView(
@@ -28,7 +28,7 @@ class CustomDrawerNavigation extends StatelessWidget {
                 item.label(context),
               ),
               onTap: () {
-                if (!isExtraWideScreen) Navigator.pop(context);
+                if (!isDesktopScreen) Navigator.pop(context);
                 context.goNamed(item.routeName);
               },
             ),

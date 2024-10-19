@@ -16,13 +16,11 @@ class AuthScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isWideScreen = context.isWideScreen;
-    final isExtraWideScreen = context.isExtraWideScreen;
+    final isDesktopScreen = context.isDesktopScreen;
 
     return Scaffold(
-      appBar: isWideScreen && !isExtraWideScreen ? AppBar() : null,
-      drawer: isWideScreen && !isExtraWideScreen
-          ? const CustomDrawerNavigation()
-          : null,
+      appBar: isWideScreen ? AppBar() : null,
+      drawer: isWideScreen ? const CustomDrawerNavigation() : null,
       bottomNavigationBar: !isWideScreen
           ? CustomNavigationBar(
               onDestinationSelected: _onDestinationSelected,
@@ -32,7 +30,7 @@ class AuthScaffold extends StatelessWidget {
       body: SafeArea(
         child: Row(
           children: [
-            if (isExtraWideScreen)
+            if (isDesktopScreen)
               const SizedBox(
                 width: 280,
                 child: CustomDrawerNavigation(),

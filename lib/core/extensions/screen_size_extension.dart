@@ -7,7 +7,7 @@ extension ScreenSizeExtension on BuildContext {
     return width > LayoutBreakpoint.xs.width;
   }
 
-  bool get isExtraWideScreen {
+  bool get isDesktopScreen {
     final width = MediaQuery.sizeOf(this).width;
     return width > LayoutBreakpoint.l.width;
   }
