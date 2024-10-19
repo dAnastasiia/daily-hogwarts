@@ -1,5 +1,6 @@
 import 'package:daily_hogwarts/core/data/character_model.dart';
 import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
+import 'package:daily_hogwarts/core/extensions/screen_size_extension.dart';
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_message.dart';
 import 'package:daily_hogwarts/core/ui/loading_indicator.dart';
@@ -67,18 +68,43 @@ class _ClassmatesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200.0,
-      child: PageView.builder(
-        itemCount: classmates.length,
-        itemBuilder: (_, index) {
-          final student = classmates[index];
-          return StudentCard(student: student);
-        },
-        controller: PageController(
-          viewportFraction: 0.85,
-        ),
-      ),
-    );
+    final isWideScreen = context.isWideScreen;
+    final gridColumns = context.gridColumns;
+
+    return isWideScreen
+        ? Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 16.0,
+            ),
+            child: GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: gridColumns,
+                crossAxisSpacing: 8.0,
+                mainAxisSpacing: 8.0,
+                childAspectRatio: 2.0,
+              ),
+              itemCount: classmates.length,
+              itemBuilder: (_, index) {
+                final student = classmates[index];
+                return StudentCard(student: student);
+              },
+            ),
+          )
+        : SizedBox(
+            height: 200.0,
+            child: PageView.builder(
+              itemCount: classmates.length,
+              itemBuilder: (_, index) {
+                final student = classmates[index];
+                return StudentCard(student: student);
+              },
+              controller: PageController(
+                viewportFraction: 0.85,
+              ),
+            ),
+          );
   }
 }
