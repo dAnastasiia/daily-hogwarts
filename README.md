@@ -28,6 +28,12 @@ This is a simple, fun, and engaging app designed to immerse Harry Potter fans in
 - **Description:** Users can sign up and log in using their email and password. Firebase handles authentication, which personalizes the experience by storing user data. Once sorted into a house, the app applies that house's color scheme and flags.
 - **Purpose:** Personalize the user experience.
 
+## Firebase Hosting & Multi-Platform Support
+
+- **Deployed to Firebase Hosting:** The app is deployed on Firebase Hosting, making it accessible on the web.
+- **Responsive Design:** The app supports multiple screen sizes, adapting its layout to work seamlessly on mobile devices, tablets, and desktops.
+- **Web Optimization:** The app is optimized for web browsers, offering a clean and responsive user interface for a smooth web experience.
+
 ## Limitations
 
 - **Mock Data:** Currently, spells are mocked, and no persistent data is stored for spells or user-specific preferences.
