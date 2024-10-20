@@ -41,7 +41,10 @@ This is a simple, fun, and engaging app designed to immerse Harry Potter fans in
 - **Limited Firebase Features:** Firebase is used for user authentication and storing house data. There's no Firestore database integration for storing more detailed information yet.
 - **On-launch Authentication Mechanism:** The app does not yet have a mechanism that automatically checks if the user is authenticated and redirects them to the home screen upon app launch if they are already logged in.
 
-## Roadmap Features
+## Roadmap
 
 - **Spellcasting Animations:** Future updates will include detailed animations to enhance the spellcasting experience.
 - **Theme & Language Preferences:** A mechanism (such as shared preferences) will be added to save the user's theme and language settings.
+- **App Icon:** Replace the default app icon with a custom Hogwarts-themed icon to enhance the visual identity of the app.
+- **Proper App Name Display:** Ensure the app displays the correct name "Daily Hogwarts" across all platforms (mobile and web).
+- **Splash Screen:** Implement a custom splash screen with a magical design to create a more immersive experience when launching the app.
