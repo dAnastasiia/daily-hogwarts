@@ -94,7 +94,6 @@ class _SignupPageState extends State<SignupPage> {
                           labelText: t.username,
                           isRequired: true,
                           validators: const [
-                            RequiredValidation(),
                             NameValidation(),
                           ],
                           onSaved: (value) => _username = value,
@@ -103,7 +102,6 @@ class _SignupPageState extends State<SignupPage> {
                           labelText: t.email,
                           isRequired: true,
                           validators: const [
-                            RequiredValidation(),
                             EmailValidation(),
                           ],
                           onSaved: (value) => _email = value,
@@ -113,7 +111,6 @@ class _SignupPageState extends State<SignupPage> {
                           isRequired: true,
                           isObscured: true,
                           validators: const [
-                            RequiredValidation(),
                             PasswordValidation(),
                           ],
                           onSaved: (value) => _password = value,
@@ -135,24 +132,14 @@ class _SignupPageState extends State<SignupPage> {
                         CustomTextField(
                           labelText: t.creatureQuestion,
                           isRequired: true,
-                          validators: const [
-                            RequiredValidation(),
-                          ],
-                          onSaved: (value) {},
                         ),
                         CustomTextField(
                           labelText: t.bestQualityQuestion,
                           isRequired: true,
-                          validators: const [
-                            RequiredValidation(),
-                          ],
                         ),
                         CustomTextField(
                           labelText: t.dreamQuestion,
                           isRequired: true,
-                          validators: const [
-                            RequiredValidation(),
-                          ],
                         ),
                       ],
                       spacing: 20,
