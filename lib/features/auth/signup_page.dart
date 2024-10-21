@@ -3,6 +3,7 @@ import 'package:daily_hogwarts/core/extensions/localization_extension.dart';
 import 'package:daily_hogwarts/core/model/auth_view_model.dart';
 import 'package:daily_hogwarts/core/ui/custom_filled_button.dart';
 import 'package:daily_hogwarts/core/ui/custom_text_field.dart';
+import 'package:daily_hogwarts/core/ui/form_wrapper.dart';
 import 'package:daily_hogwarts/core/ui/notifications_handler.dart';
 import 'package:daily_hogwarts/core/utils/enums/auth_status.dart';
 import 'package:daily_hogwarts/core/utils/forms/validation.dart';
@@ -69,93 +70,82 @@ class _SignupPageState extends State<SignupPage> {
             }
           });
 
-          return Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-            ),
-            child: SingleChildScrollView(
-              child: Form(
-                key: formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      t.mainInfo,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    ...getPrettifiedWidgetsList(
-                      entries: [
-                        CustomTextField(
-                          labelText: t.username,
-                          isRequired: true,
-                          validators: const [
-                            NameValidation(),
-                          ],
-                          onSaved: (value) => _username = value,
-                        ),
-                        CustomTextField(
-                          labelText: t.email,
-                          isRequired: true,
-                          validators: const [
-                            EmailValidation(),
-                          ],
-                          onSaved: (value) => _email = value,
-                        ),
-                        CustomTextField(
-                          labelText: t.password,
-                          isRequired: true,
-                          isObscured: true,
-                          validators: const [
-                            PasswordValidation(),
-                          ],
-                          onSaved: (value) => _password = value,
-                        ),
-                      ],
-                      spacing: 20,
-                    ),
-                    const SizedBox(height: 60),
-                    Text(
-                      t.sortingHatQuestions,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    ...getPrettifiedWidgetsList(
-                      entries: [
-                        CustomTextField(
-                          labelText: t.creatureQuestion,
-                          isRequired: true,
-                        ),
-                        CustomTextField(
-                          labelText: t.bestQualityQuestion,
-                          isRequired: true,
-                        ),
-                        CustomTextField(
-                          labelText: t.dreamQuestion,
-                          isRequired: true,
-                        ),
-                      ],
-                      spacing: 20,
-                    ),
-                    const SizedBox(height: 60),
-                    CustomFilledButton(
-                      title: t.letsGo,
-                      isLoading: authProvider.isLoading,
-                      onPressed: () => _submitForm(authProvider),
-                      backgroundColor: Colors.deepPurple,
-                      foregroundColor: Colors.white,
-                    ),
-                  ],
+          return FormWrapper(
+            formKey: formKey,
+            children: [
+              Text(
+                t.mainInfo,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
+              const SizedBox(height: 12),
+              ...getPrettifiedWidgetsList(
+                entries: [
+                  CustomTextField(
+                    labelText: t.username,
+                    isRequired: true,
+                    validators: const [
+                      NameValidation(),
+                    ],
+                    onSaved: (value) => _username = value,
+                  ),
+                  CustomTextField(
+                    labelText: t.email,
+                    isRequired: true,
+                    validators: const [
+                      EmailValidation(),
+                    ],
+                    onSaved: (value) => _email = value,
+                  ),
+                  CustomTextField(
+                    labelText: t.password,
+                    isRequired: true,
+                    isObscured: true,
+                    validators: const [
+                      PasswordValidation(),
+                    ],
+                    onSaved: (value) => _password = value,
+                  ),
+                ],
+                spacing: 20,
+              ),
+              const SizedBox(height: 60),
+              Text(
+                t.sortingHatQuestions,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 12),
+              ...getPrettifiedWidgetsList(
+                entries: [
+                  CustomTextField(
+                    labelText: t.creatureQuestion,
+                    isRequired: true,
+                  ),
+                  CustomTextField(
+                    labelText: t.bestQualityQuestion,
+                    isRequired: true,
+                  ),
+                  CustomTextField(
+                    labelText: t.dreamQuestion,
+                    isRequired: true,
+                  ),
+                ],
+                spacing: 20,
+              ),
+              const SizedBox(height: 60),
+              CustomFilledButton(
+                title: t.letsGo,
+                isLoading: authProvider.isLoading,
+                onPressed: () => _submitForm(authProvider),
+                backgroundColor: Colors.deepPurple,
+                foregroundColor: Colors.white,
+              ),
+            ],
           );
         },
       ),

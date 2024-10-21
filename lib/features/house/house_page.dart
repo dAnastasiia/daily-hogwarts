@@ -1,3 +1,4 @@
+import 'package:daily_hogwarts/core/extensions/screen_size_extension.dart';
 import 'package:daily_hogwarts/features/house/ui/classmates.dart';
 import 'package:daily_hogwarts/features/house/ui/favourite_spells.dart';
 import 'package:daily_hogwarts/features/house/ui/flexible_app_bar.dart';
@@ -9,18 +10,21 @@ class HousePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    final isWideScreen = context.isWideScreen;
+
+    return Scaffold(
       body: CustomScrollView(
         slivers: [
-          FlexibleAppBar(),
-          SliverToBoxAdapter(
+          if (!isWideScreen) const FlexibleAppBar(),
+          const SliverToBoxAdapter(
             child: SizedBox(height: 16),
           ),
-          Teachers(),
-          Classmates(),
-          SliverToBoxAdapter(
-            child: FavouriteSpells(),
-          ),
+          const Teachers(),
+          const Classmates(),
+          if (!isWideScreen)
+            const SliverToBoxAdapter(
+              child: FavouriteSpells(),
+            ),
         ],
       ),
     );
