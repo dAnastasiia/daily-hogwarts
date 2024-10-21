@@ -81,7 +81,6 @@ class _LoginPageState extends State<LoginPage> {
                     labelText: t.email,
                     isRequired: true,
                     validators: const [
-                      RequiredValidation(),
                       EmailValidation(),
                     ],
                     onSaved: (value) => _email = value,
@@ -91,7 +90,6 @@ class _LoginPageState extends State<LoginPage> {
                     isRequired: true,
                     isObscured: true,
                     validators: const [
-                      RequiredValidation(),
                       PasswordValidation(),
                     ],
                     onSaved: (value) => _password = value,
