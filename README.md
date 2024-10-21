@@ -4,7 +4,7 @@ This is a simple, fun, and engaging app designed to immerse Harry Potter fans in
 
 ## App structure from schema to real life
 
-![screenshot](./assets/app_schema.svg)
+![screenshot](./assets/app-schema.svg)
 
 ## Key Features
 
