@@ -1,6 +1,6 @@
 # Daily Hogwarts
 
-This is a simple, fun, and engaging app designed to immerse Harry Potter fans in the magic of the wizarding world through daily interactions. With spell-swiping, character trivia, and personalized house features, users can explore the wizarding world through an intuitive interface. This project is still under development, with mock data and several exciting features on the roadmap.
+This is a simple, fun, and engaging app designed to immerse Harry Potter fans in the magic of the wizarding world through daily interactions. With spell-swiping, character trivia, and personalized house features, users can explore the wizarding world through an intuitive interface. While still under development, the project serves as a hands-on way to explore and practice app development skills with mock data and some exciting enhancements on the roadmap.
 
 ## App structure from schema to real life
 
@@ -42,9 +42,12 @@ This is a simple, fun, and engaging app designed to immerse Harry Potter fans in
 - **On-launch Authentication Mechanism:** The app does not yet have a mechanism that automatically checks if the user is authenticated and redirects them to the home screen upon app launch if they are already logged in.
 
 ## Roadmap
+The following are potential areas to cover as the project develops. As this is a learning project, these are more like suggested directions for continued growth rather than set deliverables.
 
 - **Spellcasting Animations:** Future updates will include detailed animations to enhance the spellcasting experience.
 - **Theme & Language Preferences:** A mechanism (such as shared preferences) will be added to save the user's theme and language settings.
 - **App Icon:** Replace the default app icon with a custom Hogwarts-themed icon to enhance the visual identity of the app.
 - **Proper App Name Display:** Ensure the app displays the correct name "Daily Hogwarts" across all platforms (mobile and web).
 - **Splash Screen:** Implement a custom splash screen with a magical design to create a more immersive experience when launching the app.
+- **Screen Orientation Setup**: Configure screen orientation settings for a consistent user experience across all screens.
+- **Testing**: Integrate testing to improve app stability and ensure a bug-free user experience.
